@@ -76,6 +76,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		103CFF4B23ABC24F00950858 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		103CFF4C23ABC27500950858 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		103CFF4D23ABC27C00950858 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		10E9D8D623AB016D00ED8115 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +120,9 @@
 		10E9D8E123AB016D00ED8115 /* ArcGIS-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				103CFF4D23ABC27C00950858 /* ViewModel */,
+				103CFF4C23ABC27500950858 /* View */,
+				103CFF4B23ABC24F00950858 /* Model */,
 				10E9D8E223AB016D00ED8115 /* AppDelegate.swift */,
 				10E9D8E423AB016D00ED8115 /* SceneDelegate.swift */,
 				10E9D8E623AB016D00ED8115 /* ViewController.swift */,
