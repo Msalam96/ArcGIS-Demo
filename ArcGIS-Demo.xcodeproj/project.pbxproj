@@ -97,6 +97,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		103CFF4E23ABC36A00950858 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		10E9D8D623AB016D00ED8115 = {
 			isa = PBXGroup;
 			children = (
@@ -120,16 +127,17 @@
 		10E9D8E123AB016D00ED8115 /* ArcGIS-Demo */ = {
 			isa = PBXGroup;
 			children = (
-				103CFF4D23ABC27C00950858 /* ViewModel */,
-				103CFF4C23ABC27500950858 /* View */,
-				103CFF4B23ABC24F00950858 /* Model */,
 				10E9D8E223AB016D00ED8115 /* AppDelegate.swift */,
-				10E9D8E423AB016D00ED8115 /* SceneDelegate.swift */,
-				10E9D8E623AB016D00ED8115 /* ViewController.swift */,
-				10E9D8E823AB016D00ED8115 /* Main.storyboard */,
 				10E9D8EB23AB016D00ED8115 /* Assets.xcassets */,
-				10E9D8ED23AB016D00ED8115 /* LaunchScreen.storyboard */,
 				10E9D8F023AB016D00ED8115 /* Info.plist */,
+				10E9D8ED23AB016D00ED8115 /* LaunchScreen.storyboard */,
+				10E9D8E823AB016D00ED8115 /* Main.storyboard */,
+				103CFF4B23ABC24F00950858 /* Model */,
+				10E9D8E423AB016D00ED8115 /* SceneDelegate.swift */,
+				103CFF4C23ABC27500950858 /* View */,
+				103CFF4E23ABC36A00950858 /* ViewController */,
+				10E9D8E623AB016D00ED8115 /* ViewController.swift */,
+				103CFF4D23ABC27C00950858 /* ViewModel */,
 			);
 			path = "ArcGIS-Demo";
 			sourceTree = "<group>";
