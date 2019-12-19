@@ -28,6 +28,12 @@ xcuserdata/
 *.xccheckout
 *.xcscmblueprint
 
+####
+# CocoaPods
+Pods/
+!Podfile
+!Podfile.lock
+
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
