@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10D5133E23AD2DF000AE4C33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D5133D23AD2DF000AE4C33 /* LoginViewController.swift */; };
 		10E9D8E323AB016D00ED8115 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D8E223AB016D00ED8115 /* AppDelegate.swift */; };
 		10E9D8E523AB016D00ED8115 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D8E423AB016D00ED8115 /* SceneDelegate.swift */; };
 		10E9D8E723AB016D00ED8115 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D8E623AB016D00ED8115 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10D5133D23AD2DF000AE4C33 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "ArcGIS-Demo/View/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
 		10E9D8DF23AB016D00ED8115 /* ArcGIS-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ArcGIS-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E9D8E223AB016D00ED8115 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10E9D8E423AB016D00ED8115 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		103CFF4E23ABC36A00950858 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				10D5133D23AD2DF000AE4C33 /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -181,7 +184,6 @@
 				2C9FFF6262163321F2E23DC7 /* Pods-ArcGIS-Demo.debug.xcconfig */,
 				9059ACACD65262E6B54EEC9C /* Pods-ArcGIS-Demo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -360,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10D5133E23AD2DF000AE4C33 /* LoginViewController.swift in Sources */,
 				10E9D8E723AB016D00ED8115 /* ViewController.swift in Sources */,
 				10E9D8E323AB016D00ED8115 /* AppDelegate.swift in Sources */,
 				10E9D8E523AB016D00ED8115 /* SceneDelegate.swift in Sources */,
