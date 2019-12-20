@@ -23,20 +23,20 @@ class MapViewController : UIViewController {
         //set background to purple
         view.backgroundColor = .purple
         
+        
         //initialize and declare the mapview to a new map view
         mapView = AGSMapView()
         
         //set up the map
         setupMap()
+        setupLocationDisplay()
+        
         
         //set the view to the map view
         self.view = (mapView)
         
-        
-        
-        
-        
-        
+        let navigationController = UINavigationController(rootViewController: self)
+        navigationController.tabBarItem.title = "Map"
         
         
     }
@@ -47,5 +47,22 @@ class MapViewController : UIViewController {
         let featureServiceURL = URL(string: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads/FeatureServer/0")!
         let trailheadsTable = AGSServiceFeatureTable(url: featureServiceURL)
         mapView.map!.operationalLayers.add(AGSFeatureLayer(featureTable: trailheadsTable))
+    }
+    
+    func setupLocationDisplay() {
+    mapView.locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.compassNavigation
+    
+    mapView.locationDisplay.start { [weak self] (error:Error?) -> Void in
+            if let error = error {
+                self?.showAlert(withStatus: error.localizedDescription)
+            }
+        }
+    }
+        
+    func showAlert(withStatus: String) {
+        let alertController = UIAlertController(title: "Alert", message:
+            withStatus, preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
 }
