@@ -6,16 +6,29 @@
 //  Copyright © 2019 BMS. All rights reserved.
 //
 
+
+
 import Foundation
 import UIKit
 import ArcGIS
 
 
-class MapViewController : UIViewController {
+class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
     //make the map view variable
     var mapView: AGSMapView!
     private weak var activeSelectionQuery: AGSCancelable?
+    
+    private var featureTable: AGSServiceFeatureTable!
+    private var featureLayer: AGSFeatureLayer!
+    private var lastQuery: AGSCancelable!
+    
+    private var types = ["Destroyed", "Major", "Minor", "Affected", "Inaccessible"]
+    private var selectedFeature: AGSArcGISFeature!
+    private let optionsSegueName = "OptionsSegue"
+    
+    private let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/FeatureServer/0"
+    //"https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,42 +43,41 @@ class MapViewController : UIViewController {
         
         //set up the map
         setupMap()
-        setupLocationDisplay()
+        //setupLocationDisplay()
         
         
         //set the view to the map view
         self.view = mapView
         
-        //let navigationController = UINavigationController(rootViewController: self)
-        //navigationController.tabBarItem.title = "Map"
-        
-        navigationItem.title = "Map"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(RefreshMap))
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Current Location", style: .plain, target: self, action: #selector(setupLocationDisplay))
-        
-    
-        
-        
     }
     
-    @objc private func RefreshMap() {
+    @objc public func RefreshMap() {
         //self.mapView.map?.basemap.load(completion: nil)
         self.mapView.map!.load(completion: nil)
+        var point = AGSPointBuilder(0,0)
         
         
     }
     
-    private func setupMap() {
+    public func setupMap() {
         mapView.map = AGSMap(basemapType: .navigationVector, latitude: 34.02700, longitude: -118.80543, levelOfDetail: 13)
         
-        let featureServiceURL = URL(string: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads/FeatureServer/0")!
-        let trailheadsTable = AGSServiceFeatureTable(url: featureServiceURL)
-        mapView.map!.operationalLayers.add(AGSFeatureLayer(featureTable: trailheadsTable))
+        self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
+        let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
+        
+        self.mapView.map!.operationalLayers.add(featureLayer)
+        
+        self.mapView.map = self.mapView.map
+        self.mapView.touchDelegate = self
+        
+        //store the feature layer for later use
+        self.featureLayer = featureLayer
+        
+        
     }
     
-    @objc func setupLocationDisplay() {
-    mapView.locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.compassNavigation
+    @objc public func setupLocationDisplay() {
+        mapView.locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.recenter
     
     mapView.locationDisplay.start { [weak self] (error:Error?) -> Void in
             if let error = error {
@@ -81,39 +93,51 @@ class MapViewController : UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-//    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
-//        //cancel the active query if it hasn't been completed yet
-//        if let activeSelectionQuery = activeSelectionQuery {
-//            activeSelectionQuery.cancel()
-//        }
-//
-//        guard let map = mapView.map,
-//            let featureLayer = featureLayer else {
-//                return
-//        }
-//
-//        //tolerance level
-//        let toleranceInPoints: Double = 12
-//        //use tolerance to compute the envelope for query
-//        let toleranceInMapUnits = toleranceInPoints * mapView.unitsPerPoint
-//        let envelope = AGSEnvelope(xMin: mapPoint.x - toleranceInMapUnits,
-//                                   yMin: mapPoint.y - toleranceInMapUnits,
-//                                   xMax: mapPoint.x + toleranceInMapUnits,
-//                                   yMax: mapPoint.y + toleranceInMapUnits,
-//                                   spatialReference: map.spatialReference)
-//
-//        //create query parameters object
-//        let queryParams = AGSQueryParameters()
-//        queryParams.geometry = envelope
-//        
-//        //run the selection query
-//        activeSelectionQuery = featureLayer.selectFeatures(withQuery: queryParams, mode: .new) { [weak self] (queryResult: AGSFeatureQueryResult?, error: Error?) in
-//            if let error = error {
-//                self?.presentAlert(error: error)
-//            }
-//            if let result = queryResult {
-//                print("\(result.featureEnumerator().allObjects.count) feature(s) selected")
-//            }
-//        }
-//    }
+    func showCallout(_ feature: AGSFeature, tapLocation: AGSPoint?) {
+        let title = feature.attributes["name"] as! String
+        print(feature.attributes)
+        self.mapView.callout.title = title
+        self.mapView.callout.isAccessoryButtonHidden = true
+        self.mapView.callout.detail = "x: \(feature.attributes["latitude"] ?? "Unknown") - y: \(feature.attributes["longitude"] ?? "Unknown")"
+        self.mapView.callout.delegate = self
+        self.mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
+    }
+    
+    // MARK: - AGSGeoViewTouchDelegate
+    
+    func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        
+        if let lastQuery = self.lastQuery {
+            lastQuery.cancel()
+        }
+        
+        //hide the callout
+        self.mapView.callout.dismiss()
+        
+        self.lastQuery = self.mapView.identifyLayer(self.featureLayer, screenPoint: screenPoint, tolerance: 12, returnPopupsOnly: false, maximumResults: 1) { [weak self] (identifyLayerResult: AGSIdentifyLayerResult) in
+            if let error = identifyLayerResult.error {
+                print(error)
+            } else if let features = identifyLayerResult.geoElements as? [AGSArcGISFeature],
+                let feature = features.first {
+                //show callout for the first feature
+                self?.showCallout(feature, tapLocation: mapPoint)
+                //update selected feature
+                self?.selectedFeature = feature
+            }
+            else
+            {
+                print("didnt tap on feature")
+                
+                //if the callout is not shown, show the callout with the coordinates of the tapped location
+                if self?.mapView.callout.isHidden ?? false {
+                    self?.mapView.callout.title = "Location"
+                    self?.mapView.callout.detail = String(format: "x: %.2f, y: %.2f", mapPoint.x, mapPoint.y)
+                    self?.mapView.callout.isAccessoryButtonHidden = true
+                    self?.mapView.callout.show(at: mapPoint, screenOffset: CGPoint.zero, rotateOffsetWithMap: false, animated: true)
+                } else {  //hide the callout
+                    self?.mapView.callout.dismiss()
+                }
+            }
+        }
+    }
 }
