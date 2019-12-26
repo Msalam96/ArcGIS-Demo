@@ -16,7 +16,11 @@
 		10E9D8EF23AB016D00ED8115 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10E9D8ED23AB016D00ED8115 /* LaunchScreen.storyboard */; };
 		10E9D8FA23AB016D00ED8115 /* ArcGIS_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D8F923AB016D00ED8115 /* ArcGIS_DemoTests.swift */; };
 		10E9D90523AB016D00ED8115 /* ArcGIS_DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D90423AB016D00ED8115 /* ArcGIS_DemoUITests.swift */; };
+<<<<<<< HEAD
 		CA8657E823AD30AD00A510DD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8657E723AD30AD00A510DD /* MapViewController.swift */; };
+=======
+		CA8657EE23B4F89800A510DD /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8657ED23B4F89800A510DD /* TabViewController.swift */; };
+>>>>>>> staging
 		EE8366EB117A1BA4D6BB0D7D /* libPods-ArcGIS-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4618C512CEBC12FB878B34A1 /* libPods-ArcGIS-Demo.a */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +60,11 @@
 		2C9FFF6262163321F2E23DC7 /* Pods-ArcGIS-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArcGIS-Demo.debug.xcconfig"; path = "Target Support Files/Pods-ArcGIS-Demo/Pods-ArcGIS-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		4618C512CEBC12FB878B34A1 /* libPods-ArcGIS-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArcGIS-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9059ACACD65262E6B54EEC9C /* Pods-ArcGIS-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArcGIS-Demo.release.xcconfig"; path = "Target Support Files/Pods-ArcGIS-Demo/Pods-ArcGIS-Demo.release.xcconfig"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		CA8657E723AD30AD00A510DD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "ArcGIS-Demo/MapViewController.swift"; sourceTree = SOURCE_ROOT; };
+=======
+		CA8657ED23B4F89800A510DD /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = "/Users/brandon/Documents/Xcode/ArcGIS-Demo/ArcGIS-Demo/ViewController/TabViewController.swift"; sourceTree = "<absolute>"; };
+>>>>>>> staging
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +118,11 @@
 			isa = PBXGroup;
 			children = (
 				10D5133D23AD2DF000AE4C33 /* LoginViewController.swift */,
+<<<<<<< HEAD
 				CA8657E723AD30AD00A510DD /* MapViewController.swift */,
+=======
+				CA8657ED23B4F89800A510DD /* TabViewController.swift */,
+>>>>>>> staging
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -145,8 +157,8 @@
 				10E9D8F023AB016D00ED8115 /* Info.plist */,
 				10E9D8ED23AB016D00ED8115 /* LaunchScreen.storyboard */,
 				10E9D8E823AB016D00ED8115 /* Main.storyboard */,
-				103CFF4B23ABC24F00950858 /* Model */,
 				10E9D8E423AB016D00ED8115 /* SceneDelegate.swift */,
+				103CFF4B23ABC24F00950858 /* Model */,
 				103CFF4C23ABC27500950858 /* View */,
 				103CFF4E23ABC36A00950858 /* ViewController */,
 				10E9D8E623AB016D00ED8115 /* ViewController.swift */,
@@ -368,7 +380,11 @@
 				10D5133E23AD2DF000AE4C33 /* LoginViewController.swift in Sources */,
 				10E9D8E723AB016D00ED8115 /* ViewController.swift in Sources */,
 				10E9D8E323AB016D00ED8115 /* AppDelegate.swift in Sources */,
+<<<<<<< HEAD
 				CA8657E823AD30AD00A510DD /* MapViewController.swift in Sources */,
+=======
+				CA8657EE23B4F89800A510DD /* TabViewController.swift in Sources */,
+>>>>>>> staging
 				10E9D8E523AB016D00ED8115 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
