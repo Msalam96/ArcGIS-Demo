@@ -42,6 +42,8 @@ class MapViewController : UIViewController {
         navigationItem.title = "Map"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(RefreshMap))
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Current Location", style: .plain, target: self, action: #selector(setupLocationDisplay))
+        
     
         
         
@@ -62,7 +64,7 @@ class MapViewController : UIViewController {
         mapView.map!.operationalLayers.add(AGSFeatureLayer(featureTable: trailheadsTable))
     }
     
-    func setupLocationDisplay() {
+    @objc func setupLocationDisplay() {
     mapView.locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.compassNavigation
     
     mapView.locationDisplay.start { [weak self] (error:Error?) -> Void in
