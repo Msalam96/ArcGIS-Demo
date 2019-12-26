@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/brandon/Documents/Xcode/ArcGIS-Demo/ArcGIS-Demo/ViewController/TabViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:ArcGIS-Demo.xcodeproj">
    </FileRef>
    <FileRef
