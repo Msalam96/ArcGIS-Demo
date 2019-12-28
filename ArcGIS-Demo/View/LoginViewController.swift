@@ -107,7 +107,6 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
             if self?.portal.loadStatus == AGSLoadStatus.loaded {
                let fullName = self?.portal.user?.fullName
                 print(fullName!)
-                //self?.present(Test(), animated: false, completion: nil)
             } else {
                 print("yeet")
                 let alert = UIAlertController(title: "Error", message: "Invalid Username or Password", preferredStyle: UIAlertController.Style.alert)
