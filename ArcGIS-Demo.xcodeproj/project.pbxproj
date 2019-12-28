@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		109985A123B53D590014A780 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109985A023B53D590014A780 /* Test.swift */; };
-		109985A523B53EDE0014A780 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109985A423B53EDE0014A780 /* TestData.swift */; };
 		10D5133E23AD2DF000AE4C33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D5133D23AD2DF000AE4C33 /* LoginViewController.swift */; };
 		10D5134023AD451A00AE4C33 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D5133F23AD451A00AE4C33 /* AppConfiguration.swift */; };
 		10E9D8E323AB016D00ED8115 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D8E223AB016D00ED8115 /* AppDelegate.swift */; };
@@ -40,8 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		109985A023B53D590014A780 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
-		109985A423B53EDE0014A780 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		10D5133D23AD2DF000AE4C33 /* LoginViewController.swift */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "ArcGIS-Demo/View/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
 		10D5133F23AD451A00AE4C33 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		10E9D8DF23AB016D00ED8115 /* ArcGIS-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ArcGIS-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,7 +139,6 @@
 		10E9D8E123AB016D00ED8115 /* ArcGIS-Demo */ = {
 			isa = PBXGroup;
 			children = (
-				109985A023B53D590014A780 /* Test.swift */,
 				10E9D8E223AB016D00ED8115 /* AppDelegate.swift */,
 				10E9D8EB23AB016D00ED8115 /* Assets.xcassets */,
 				10E9D8F023AB016D00ED8115 /* Info.plist */,
@@ -156,7 +151,6 @@
 				10E9D8E623AB016D00ED8115 /* ViewController.swift */,
 				103CFF4D23ABC27C00950858 /* ViewModel */,
 				10D5133F23AD451A00AE4C33 /* AppConfiguration.swift */,
-				109985A423B53EDE0014A780 /* TestData.swift */,
 			);
 			path = "ArcGIS-Demo";
 			sourceTree = "<group>";
@@ -376,8 +370,6 @@
 				10E9D8E723AB016D00ED8115 /* ViewController.swift in Sources */,
 				10E9D8E323AB016D00ED8115 /* AppDelegate.swift in Sources */,
 				10E9D8E523AB016D00ED8115 /* SceneDelegate.swift in Sources */,
-				109985A523B53EDE0014A780 /* TestData.swift in Sources */,
-				109985A123B53D590014A780 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

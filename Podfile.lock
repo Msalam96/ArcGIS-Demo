@@ -1,16 +1,20 @@
 PODS:
   - ArcGIS-Runtime-SDK-iOS (100.7)
+  - SCLAlertView (0.8)
 
 DEPENDENCIES:
   - ArcGIS-Runtime-SDK-iOS (~> 100.7)
+  - SCLAlertView
 
 SPEC REPOS:
   trunk:
     - ArcGIS-Runtime-SDK-iOS
+    - SCLAlertView
 
 SPEC CHECKSUMS:
   ArcGIS-Runtime-SDK-iOS: 9a7e227d6779eaa16119b170b4e7861b02f5d83a
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
 
-PODFILE CHECKSUM: c6dffaf558d94ecc71c50a7b472435931cb752ae
+PODFILE CHECKSUM: 308b39d34c68cdcd4e97ebfc75c9336b3678bedc
 
 COCOAPODS: 1.8.4
