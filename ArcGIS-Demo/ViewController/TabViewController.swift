@@ -16,7 +16,7 @@ class TabViewController : UITabBarController {
         
         //TODO: replace UIViewController with the actual view controllers
         let mapViewController = UIViewController()
-        let profileViewController = UIViewController()
+        let profileViewController = ProfileViewController()
         
         //set tab titles
         mapViewController.tabBarItem.title = "Map"
@@ -24,7 +24,6 @@ class TabViewController : UITabBarController {
         
         //DEBUGGING: change background color
         mapViewController.view.backgroundColor = .blue
-        profileViewController.view.backgroundColor = .red
         
         viewControllers = [
             mapViewController,
