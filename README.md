@@ -3,9 +3,9 @@
 ## Views
 
 ### Sign-In View
-- [ ] Username Textfield 
-- [ ] Password Textfield
-- [ ] Sign-In Button
+- [x] Username Textfield 
+- [x] Password Textfield
+- [x] Sign-In Button
 
 ### Profile View
 - [ ] Display User Information using Collection View
