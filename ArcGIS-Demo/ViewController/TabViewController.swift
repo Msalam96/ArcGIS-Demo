@@ -17,10 +17,11 @@ class TabViewController : UITabBarController {
         //TODO: replace UIViewController with the actual view controllers
         let mapViewController = UIViewController()
         let profileViewController = UIViewController()
-        
+        let loginViewController = LoginViewController()
         //set tab titles
         mapViewController.tabBarItem.title = "Map"
         profileViewController.tabBarItem.title = "Profile"
+        loginViewController.tabBarItem.title = "LogIn"
         
         //DEBUGGING: change background color
         mapViewController.view.backgroundColor = .blue
@@ -28,7 +29,8 @@ class TabViewController : UITabBarController {
         
         viewControllers = [
             mapViewController,
-            profileViewController
+            profileViewController,
+            loginViewController
         ]
         
         
