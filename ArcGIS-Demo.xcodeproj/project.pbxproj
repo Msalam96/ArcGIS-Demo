@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10CD1CE923BB8F3400CBBA5B /* AGS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD1CE823BB8F3400CBBA5B /* AGS.swift */; };
 		10D5133E23AD2DF000AE4C33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D5133D23AD2DF000AE4C33 /* LoginViewController.swift */; };
 		10E9D8E323AB016D00ED8115 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D8E223AB016D00ED8115 /* AppDelegate.swift */; };
 		10E9D8E523AB016D00ED8115 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D8E423AB016D00ED8115 /* SceneDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10CD1CE823BB8F3400CBBA5B /* AGS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AGS.swift; path = "ArcGIS-Demo/View/AGS.swift"; sourceTree = SOURCE_ROOT; };
 		10D5133D23AD2DF000AE4C33 /* LoginViewController.swift */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "ArcGIS-Demo/View/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
 		10E9D8DF23AB016D00ED8115 /* ArcGIS-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ArcGIS-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E9D8E223AB016D00ED8115 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		103CFF4B23ABC24F00950858 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				10CD1CE823BB8F3400CBBA5B /* AGS.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10D5133E23AD2DF000AE4C33 /* LoginViewController.swift in Sources */,
+				10CD1CE923BB8F3400CBBA5B /* AGS.swift in Sources */,
 				10E9D8E723AB016D00ED8115 /* ViewController.swift in Sources */,
 				10E9D8E323AB016D00ED8115 /* AppDelegate.swift in Sources */,
 				CA8657EE23B4F89800A510DD /* TabViewController.swift in Sources */,
