@@ -17,12 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow()
         window?.makeKeyAndVisible()
-<<<<<<< HEAD
-        window?.rootViewController =  TabViewController()
-=======
+
+        //window?.rootViewController =  TabViewController()
         //window?.rootViewController =  UINavigationController(rootViewController: TabViewController())
         window?.rootViewController = LoginViewController()
->>>>>>> staging
+
         return true
     }
 
