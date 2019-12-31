@@ -75,15 +75,20 @@ class TabViewController : UITabBarController {
         profileNavController.navigationBar.barTintColor = .orange
         
        
-        
-        
+        let loginViewController = LoginViewController()
+        //set tab titles
+        mapViewController.tabBarItem.title = "Map"
+        profileViewController.tabBarItem.title = "Profile"
+        loginViewController.tabBarItem.title = "LogIn"
         
         tabBar.tintColor = .white
         tabBar.barTintColor = .orange
         
         viewControllers = [
-            mapNavController,
-            profileNavController
+            mapViewController,
+            profileViewController,
+            loginViewController
+
         ]
         
         
