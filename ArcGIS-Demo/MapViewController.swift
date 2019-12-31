@@ -15,8 +15,9 @@ import ArcGIS
 
 class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
+    var auth: AGS?
+    
     var login = LoginViewController()
-    public var mapViewModel: MapViewModel?
     
     //make the map view variable
     var mapView: AGSMapView!
@@ -33,7 +34,14 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
     private let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/FeatureServer/0"
     //"https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
+    init(auth: AGS) {
+        super.init(nibName: nil, bundle: nil)
+        self.auth = auth
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

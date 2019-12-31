@@ -12,12 +12,20 @@ import ArcGIS
 
 class TabViewController : UITabBarController {
     
+    var auth: AGS
     
+    init(auth:AGS) {
+        self.auth = auth
+        super.init(nibName: nil, bundle: nil)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        presentSecondViewController()
         
         //license the app with the supplied License key
         do {
@@ -30,7 +38,7 @@ class TabViewController : UITabBarController {
         
         //MARK: MAP SETUP
         //instantiate the MapViewController
-        let mapViewController = MapViewController()
+        let mapViewController = MapViewController(auth: auth)
         
         //set its background color to red
         mapViewController.view.backgroundColor = .red
@@ -54,6 +62,8 @@ class TabViewController : UITabBarController {
         
         //
         mapNavController.navigationBar.barTintColor = .orange
+        
+        mapViewController.auth = self.auth
         
         
         
@@ -89,14 +99,9 @@ class TabViewController : UITabBarController {
 
         ]
         
-        
+        print("TAB VIEW CONTROLLER: \(auth?.fullName)")
         
         
     }
     
-    func presentSecondViewController() {
-        let secondVC = LoginViewController()
-        
-        self.present(secondVC, animated: true)
-    }
 }

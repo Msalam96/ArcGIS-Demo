@@ -15,6 +15,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
      
      //private var auth = AGS()
      var auth = AGS()
+     var authPortal: AGSPortalUser?
      
      private let loginContentView:UIView = {
           let view = UIView()
@@ -98,6 +99,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
                // check the portal item loaded and print the modified date
                if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
                     let fullName = self?.auth.portal.user?.fullName
+                    self?.authPortal = self?.auth.portal.user
                     
                     NotificationCenter.default.post(name: LoginViewController.NotificationDone, object: nil)
 
