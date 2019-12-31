@@ -13,9 +13,9 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
      
      static let NotificationDone = NSNotification.Name(rawValue: "Done")
      
-     //private var auth = AGS()
-     var auth = AGS()
-     
+     private var auth = AGS()
+//     var auth:AGS?
+
      private let loginContentView:UIView = {
           let view = UIView()
           view.translatesAutoresizingMaskIntoConstraints = false
@@ -98,12 +98,13 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
                // check the portal item loaded and print the modified date
                if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
                     let fullName = self?.auth.portal.user?.fullName
-                    
-                    NotificationCenter.default.post(name: LoginViewController.NotificationDone, object: nil)
-
+                    let vc = TabViewController(ags: self!.auth)
+                    vc.modalPresentationStyle = .fullScreen
+                    //NotificationCenter.default.post(name: LoginViewController.NotificationDone, object: nil)
+                    self?.present(vc, animated: true, completion: nil)
                     //self?.present(newViewController, animated: true)
-                    
                     print(fullName!)
+                    
                } else {
                     print("yeet")
                     let alert = UIAlertController(title: "Error", message: "Invalid Username or Password", preferredStyle: UIAlertController.Style.alert)

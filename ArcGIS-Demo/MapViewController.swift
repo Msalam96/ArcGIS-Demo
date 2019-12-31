@@ -62,7 +62,7 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
         //var point = AGSPointBuilder(0,0)
         
         
-        print(login.auth.portal.user?.fullName)
+        //print(login.auth.portal.user?.fullName)
         
         
     }
