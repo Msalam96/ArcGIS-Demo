@@ -21,6 +21,8 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
           loginView.loginContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
      }
      
+     static let NotificationDone = NSNotification.Name(rawValue: "Done")
+     
      override func viewDidLoad() {
           super.viewDidLoad()
           view.backgroundColor = .lightGray
@@ -34,9 +36,15 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
                // check the portal item loaded and print the modified date
                if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
                     let fullName = self?.auth.portal.user?.fullName
+                    
+                    NotificationCenter.default.post(name: LoginViewController.NotificationDone, object: nil)
+
+                    //self?.present(newViewController, animated: true)
+                    
                     print(fullName!)
                }
           }
+          print("tst")
      }
      
      @objc func buttonAction(sender: UIButton!) {
