@@ -11,7 +11,10 @@ import ArcGIS
 
 class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
      
-     private var auth = AGS()
+     static let NotificationDone = NSNotification.Name(rawValue: "Done")
+     
+     //private var auth = AGS()
+     var auth = AGS()
      
      private let loginContentView:UIView = {
           let view = UIView()
@@ -95,6 +98,11 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
                // check the portal item loaded and print the modified date
                if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
                     let fullName = self?.auth.portal.user?.fullName
+                    
+                    NotificationCenter.default.post(name: LoginViewController.NotificationDone, object: nil)
+
+                    //self?.present(newViewController, animated: true)
+                    
                     print(fullName!)
                } else {
                     print("yeet")
@@ -103,6 +111,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
                     self?.present(alert, animated: true, completion: nil)
                }
           }
+          print("tst")
      }
      
      func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
