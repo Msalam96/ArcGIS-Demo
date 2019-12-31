@@ -15,6 +15,9 @@ import ArcGIS
 
 class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
+    var login = LoginViewController()
+    public var mapViewModel: MapViewModel?
+    
     //make the map view variable
     var mapView: AGSMapView!
     private weak var activeSelectionQuery: AGSCancelable?
@@ -29,6 +32,8 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
     
     private let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/FeatureServer/0"
     //"https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +59,10 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
     @objc public func RefreshMap() {
         //self.mapView.map?.basemap.load(completion: nil)
         self.mapView.map!.load(completion: nil)
-        var point = AGSPointBuilder(0,0)
+        //var point = AGSPointBuilder(0,0)
+        
+        
+        print(login.auth.portal.user?.fullName)
         
         
     }

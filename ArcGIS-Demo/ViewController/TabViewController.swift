@@ -17,6 +17,7 @@ class TabViewController : UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        presentSecondViewController()
         
         //license the app with the supplied License key
         do {
@@ -75,23 +76,27 @@ class TabViewController : UITabBarController {
         profileNavController.navigationBar.barTintColor = .orange
         
        
-        let loginViewController = LoginViewController()
         //set tab titles
         mapViewController.tabBarItem.title = "Map"
         profileViewController.tabBarItem.title = "Profile"
-        loginViewController.tabBarItem.title = "LogIn"
         
         tabBar.tintColor = .white
         tabBar.barTintColor = .orange
         
         viewControllers = [
-            mapViewController,
-            profileViewController,
-            loginViewController
+            mapNavController,
+            profileNavController,
 
         ]
         
         
+        
+        
     }
     
+    func presentSecondViewController() {
+        let secondVC = LoginViewController()
+        
+        self.present(secondVC, animated: true)
+    }
 }
