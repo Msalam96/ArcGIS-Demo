@@ -22,20 +22,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //window?.rootViewController = TabViewController()
         loginViewController = LoginViewController()
         
-        window?.rootViewController = UINavigationController(rootViewController: loginViewController!)
-        
 //        NotificationCenter.default.addObserver(self, selector:#selector(done(notification:)),name:LoginViewController.NotificationDone,object: nil)
 
         guard let _ = (scene as? UIWindowScene) else { return }
     }
     
 //    @objc func done(notification: Notification) {
-//
-//        let vc = TabViewController()
-//        print("SCENE DELEGATE: \(loginViewController?.authPortal?.fullName)")
-//        vc.auth = loginViewController?.authPortal
-//        print("SCENE DELEGATE / VC: \(vc.auth?.fullName)")
-//        window?.rootViewController = vc
+
+//        window?.rootViewController = TabViewController()
+
 //    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
