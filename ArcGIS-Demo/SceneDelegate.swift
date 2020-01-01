@@ -21,14 +21,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //window?.rootViewController = TabViewController()
         window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
         
-        NotificationCenter.default.addObserver(self, selector:#selector(done(notification:)),name:LoginViewController.NotificationDone,object: nil)
+//        NotificationCenter.default.addObserver(self, selector:#selector(done(notification:)),name:LoginViewController.NotificationDone,object: nil)
 
         guard let _ = (scene as? UIWindowScene) else { return }
     }
     
-    @objc func done(notification: Notification) {
-        window?.rootViewController = TabViewController()
-    }
+//    @objc func done(notification: Notification) {
+//        window?.rootViewController = TabViewController()
+//    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
