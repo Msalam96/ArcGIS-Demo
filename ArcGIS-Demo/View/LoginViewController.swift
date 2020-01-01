@@ -14,6 +14,8 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
      private var auth = AGS()
      private var loginView = LoginView()
 
+     static let NotificationDone = NSNotification.Name(rawValue: "Done")
+
      func setupConstraints(){
           loginView.loginContentView.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
           loginView.loginContentView.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
@@ -21,7 +23,6 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
           loginView.loginContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
      }
      
-     static let NotificationDone = NSNotification.Name(rawValue: "Done")
      
      override func viewDidLoad() {
           super.viewDidLoad()
@@ -33,18 +34,13 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
                     print(error)
                     return
                }
-               // check the portal item loaded and print the modified date
-               if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
-                    let fullName = self?.auth.portal.user?.fullName
-                    
-                    NotificationCenter.default.post(name: LoginViewController.NotificationDone, object: nil)
 
-                    //self?.present(newViewController, animated: true)
-                    
-                    print(fullName!)
+               if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
+                    let fullName = self?.auth.portal.user?.fullNames
+                    NotificationCenter.default.post(name: LoginViewController.NotificationDone, object: nil)
                }
           }
-          print("tst")
+          
      }
      
      @objc func buttonAction(sender: UIButton!) {
@@ -56,6 +52,9 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
                print("its haddening")
                let credentials = AGSCredential(user: loginView.usernameTextField.text!, password: loginView.passwordTextField.text!)
                auth.activeChallenge?.continue(with: credentials)
+               if(auth.portal.loadError) == nil {
+                    print("yata")
+               }
           }
      }
      
