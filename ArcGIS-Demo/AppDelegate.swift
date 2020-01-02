@@ -11,17 +11,19 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    var window: UIWindow?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         
         
-        ///window = UIWindow()
+        window = UIWindow()
         ///window?.makeKeyAndVisible()
 
         ///window?.rootViewController =  TabViewController()//UINavigationController(rootViewController: TabViewController())
         //window?.rootViewController = TabViewController()
-        //window?.rootViewController = LoginViewController()
+        window?.rootViewController = LoginViewController()
 
         return true
     }
