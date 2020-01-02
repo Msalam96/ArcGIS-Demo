@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         //window?.rootViewController = TabViewController()
         loginViewController = LoginViewController()
+        window?.rootViewController = loginViewController
         
 //        NotificationCenter.default.addObserver(self, selector:#selector(done(notification:)),name:LoginViewController.NotificationDone,object: nil)
 

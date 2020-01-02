@@ -15,28 +15,23 @@ import ArcGIS
 
 class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDelegate {
     
+    //models
     var auth: AGS?
-    
-    var login = LoginViewController()
+    var map: Map!
     
     //make the map view variable
     var mapView: AGSMapView!
-    private weak var activeSelectionQuery: AGSCancelable?
-    
     private var featureTable: AGSServiceFeatureTable!
     private var featureLayer: AGSFeatureLayer!
     private var lastQuery: AGSCancelable!
-    
-    private var types = ["Destroyed", "Major", "Minor", "Affected", "Inaccessible"]
     private var selectedFeature: AGSArcGISFeature!
-    private let optionsSegueName = "OptionsSegue"
-    
     private let featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/FeatureServer/0"
     //"https://sampleserver6.arcgisonline.com/arcgis/rest/services/DamageAssessment/FeatureServer/0"
     
     init(auth: AGS) {
         super.init(nibName: nil, bundle: nil)
         self.auth = auth
+        self.map.featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/FeatureServer/0"
     }
     
     required init?(coder: NSCoder) {
@@ -45,7 +40,6 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         //set background to purple
         view.backgroundColor = .purple
@@ -56,6 +50,7 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
         
         //set up the map
         setupMap()
+        
         //setupLocationDisplay()
         
         
@@ -65,18 +60,53 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
     }
     
     @objc public func RefreshMap() {
-        //self.mapView.map?.basemap.load(completion: nil)
-        self.mapView.map!.load(completion: nil)
-        //var point = AGSPointBuilder(0,0)
         
+        let portalItem = AGSPortalItem(portal: auth!.portal, itemID: "2f1fd68a58a14656bd6625cd681873e5")
+        let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5,y: UIScreen.main.bounds.size.height*0.5)
         
-        //print(login.auth.portal.user?.fullName)
+        var screenlocation = mapView.screen(toLocation: frameSize)
         
+        let portalMap = AGSMap(item: portalItem)
+        self.mapView.setViewpointCenter(screenlocation, completion: nil)
+        mapView.map = portalMap
+        
+    
+        let newBasemapLayer = AGSBasemap(item: portalItem)
+        self.mapView.map?.basemap = newBasemapLayer
         
     }
     
     public func setupMap() {
-        mapView.map = AGSMap(basemapType: .navigationVector, latitude: 34.02700, longitude: -118.80543, levelOfDetail: 13)
+        
+        let portalItem = AGSPortalItem(portal: auth!.portal, itemID: "2f1fd68a58a14656bd6625cd681873e5")
+        
+        //8dda0e7b5e2d4fafa80132d59122268c
+        //ce8a38475bc0443aaac04b025b522494
+        
+        let portalMap = AGSMap(item: portalItem)
+        
+        portalMap.basemap = .navigationVector()
+        //self.setupLocationDisplay()
+        
+         // set the map to be displayed in an AGSMapView
+        mapView.map = portalMap
+        
+        //let map = AGSMap(basemapType: .navigationVector, latitude: 34.02700, longitude: -118.80543, levelOfDetail: 13)
+        //let basemap = AGSBasemapType(.navigationVector)
+        
+        //remove the existing basemap layer
+        //self.mapView.removeMapLayerWithName(kBasemapLayerName)
+        
+        //add new Layer
+        let newBasemapLayer = AGSBasemap(item: portalItem)
+        
+        self.mapView.map?.basemap = newBasemapLayer
+        self.mapView.map?.basemap = .streetsNightVector()
+        
+        //self.mapView.insertMapLayer(newBasemapLayer, withName: kBasemapLayerName, atIndex: 0);
+        
+        
+        
         
         self.featureTable = AGSServiceFeatureTable(url: URL(string: featureServiceURL)!)
         let featureLayer = AGSFeatureLayer(featureTable: self.featureTable)
@@ -92,6 +122,7 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
         
     }
     
+    //MARK: setup location display
     @objc public func setupLocationDisplay() {
         mapView.locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.recenter
     
@@ -102,6 +133,7 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
         }
     }
         
+    //MARK: Show alert
     func showAlert(withStatus: String) {
         let alertController = UIAlertController(title: "Alert", message:
             withStatus, preferredStyle: UIAlertController.Style.alert)
@@ -109,6 +141,7 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
         present(alertController, animated: true, completion: nil)
     }
     
+    //MARK: Show Callout
     func showCallout(_ feature: AGSFeature, tapLocation: AGSPoint?) {
         let title = feature.attributes["name"] as! String
         print(feature.attributes)
@@ -120,7 +153,6 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
     }
     
     // MARK: - AGSGeoViewTouchDelegate
-    
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         
         if let lastQuery = self.lastQuery {

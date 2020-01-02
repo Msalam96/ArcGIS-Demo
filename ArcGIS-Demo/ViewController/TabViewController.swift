@@ -11,7 +11,6 @@ import UIKit
 import ArcGIS
 
 class TabViewController : UITabBarController {
-    
 
     var auth:AGS
     
