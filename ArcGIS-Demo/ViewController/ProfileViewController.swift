@@ -8,6 +8,8 @@
 //
 
 import UIKit
+import ArcGIS
+
 class ProfileViewController: UIViewController {
 
     weak var collectionView: UICollectionView!
@@ -46,6 +48,8 @@ class ProfileViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        AGSAuthenticationManager.shared().credentialCache.enableAutoSyncToKeychain(withIdentifier: "ArcGIS-Demo", accessGroup: nil, acrossDevices: false)
+        
         super.viewDidLoad()
 
         self.collectionView.dataSource = self
@@ -64,7 +68,14 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func logOut(sender: UIButton!) {
-        print("Logged out")
+        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
+        doThis()
+    }
+    
+    func doThis() {
+        let vc = LoginViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
