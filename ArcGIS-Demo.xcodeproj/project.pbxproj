@@ -18,6 +18,8 @@
 		10E9D8FA23AB016D00ED8115 /* ArcGIS_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D8F923AB016D00ED8115 /* ArcGIS_DemoTests.swift */; };
 		10E9D90523AB016D00ED8115 /* ArcGIS_DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D90423AB016D00ED8115 /* ArcGIS_DemoUITests.swift */; };
 		2DCE0B1B23BBBA9B00916620 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0B1A23BBBA9B00916620 /* ProfileViewController.swift */; };
+		2DCE0B1D23BDC7D600916620 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0B1C23BDC7D600916620 /* Cell.swift */; };
+		2DCE0B1F23BE32C400916620 /* UserDisplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0B1E23BE32C400916620 /* UserDisplayViewModel.swift */; };
 		CA8657E823AD30AD00A510DD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8657E723AD30AD00A510DD /* MapViewController.swift */; };
 		CA8657EE23B4F89800A510DD /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8657ED23B4F89800A510DD /* TabViewController.swift */; };
 		CAE965C023BBA2C300766912 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE965BF23BBA2C300766912 /* MapViewModel.swift */; };
@@ -60,6 +62,8 @@
 		10E9D90623AB016D00ED8115 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C9FFF6262163321F2E23DC7 /* Pods-ArcGIS-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArcGIS-Demo.debug.xcconfig"; path = "Target Support Files/Pods-ArcGIS-Demo/Pods-ArcGIS-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		2DCE0B1A23BBBA9B00916620 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2DCE0B1C23BDC7D600916620 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Cell.swift; path = "ArcGIS-Demo/View/Cell.swift"; sourceTree = SOURCE_ROOT; };
+		2DCE0B1E23BE32C400916620 /* UserDisplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDisplayViewModel.swift; path = "ArcGIS-Demo/View/UserDisplayViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		4618C512CEBC12FB878B34A1 /* libPods-ArcGIS-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArcGIS-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9059ACACD65262E6B54EEC9C /* Pods-ArcGIS-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArcGIS-Demo.release.xcconfig"; path = "Target Support Files/Pods-ArcGIS-Demo/Pods-ArcGIS-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		CA8657E723AD30AD00A510DD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "ArcGIS-Demo/MapViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				10CD1CE823BB8F3400CBBA5B /* AGS.swift */,
+				2DCE0B1C23BDC7D600916620 /* Cell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				CAE965BF23BBA2C300766912 /* MapViewModel.swift */,
+				2DCE0B1E23BE32C400916620 /* UserDisplayViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -384,7 +390,9 @@
 				CA8657E823AD30AD00A510DD /* MapViewController.swift in Sources */,
 				CA8657EE23B4F89800A510DD /* TabViewController.swift in Sources */,
 				2DCE0B1B23BBBA9B00916620 /* ProfileViewController.swift in Sources */,
+				2DCE0B1D23BDC7D600916620 /* Cell.swift in Sources */,
 				10E9D8E523AB016D00ED8115 /* SceneDelegate.swift in Sources */,
+				2DCE0B1F23BE32C400916620 /* UserDisplayViewModel.swift in Sources */,
 				CAE965C023BBA2C300766912 /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

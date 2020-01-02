@@ -85,9 +85,10 @@ class TabViewController : UITabBarController {
 
         profileNavController.navigationBar.barTintColor = .orange
         
-       
+        profileViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: profileViewController, action: #selector(profileViewController.logOut))
+        
+       profileViewController.navigationItem.rightBarButtonItem?.tintColor = .white
         //set tab titles
-        mapViewController.tabBarItem.title = "Map"
         profileViewController.tabBarItem.title = "Profile"
         
         tabBar.tintColor = .white
@@ -97,10 +98,6 @@ class TabViewController : UITabBarController {
             mapNavController,
             profileNavController
         ]
-        
-        
-        
-        
     }
     
     func presentSecondViewController() {
