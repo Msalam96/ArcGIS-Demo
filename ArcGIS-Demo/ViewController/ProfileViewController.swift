@@ -62,15 +62,12 @@ class ProfileViewController: UIViewController {
 
         
     }
-    @objc func doStuff() {
-       // perform any action you wish to
-       print("User inactive for more than 5 seconds .")
-       timer.invalidate()
-    }
+    
     @objc func resetTimer() {
        timer.invalidate()
        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         let userViewModel = UserDisplayViewModel(userPortal: auth!)
         
