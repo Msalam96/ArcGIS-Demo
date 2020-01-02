@@ -23,7 +23,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
      
      override func viewDidLoad() {
           super.viewDidLoad()
-          view.backgroundColor = .lightGray
+          view.backgroundColor = .orange
           AGSAuthenticationManager.shared().delegate = self
           
           auth.portal.load() {[weak self] (error) in
@@ -40,7 +40,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
      }
      
      @objc func buttonAction(sender: UIButton!) {
-          if loginView.usernameTextField.text?.isEmpty ?? false || loginView.passwordTextField.text?.isEmpty ?? false{
+          if loginView.usernameTextField.text!.isEmpty || loginView.passwordTextField.text!.isEmpty {
                let alert = UIAlertController(title: "Error", message: "Username and Password Must Be Filled", preferredStyle: UIAlertController.Style.alert)
                alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
                present(alert, animated: true, completion: nil)
