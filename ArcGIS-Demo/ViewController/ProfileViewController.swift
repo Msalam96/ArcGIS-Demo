@@ -69,10 +69,6 @@ class ProfileViewController: UIViewController {
     
     @objc func logOut(sender: UIButton!) {
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
-        doThis()
-    }
-    
-    func doThis() {
         let vc = LoginViewController()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
