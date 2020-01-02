@@ -24,6 +24,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
      override func viewDidLoad() {
           super.viewDidLoad()
           view.backgroundColor = .orange
+          
           AGSAuthenticationManager.shared().delegate = self
           
           auth.portal.load() {[weak self] (error) in
