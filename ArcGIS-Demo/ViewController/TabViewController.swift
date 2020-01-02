@@ -45,7 +45,7 @@ class TabViewController : UITabBarController {
         let mapViewController = MapViewController(auth: auth)
         
         //set its background color to red
-        mapViewController.view.backgroundColor = .red
+        //mapViewController.view.backgroundColor = .red
         
         //set its title to Map
         mapViewController.navigationItem.title = "Map"
@@ -89,9 +89,10 @@ class TabViewController : UITabBarController {
 
         profileNavController.navigationBar.barTintColor = .orange
         
-       
+        profileViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: profileViewController, action: #selector(profileViewController.logOut))
+        
+       profileViewController.navigationItem.rightBarButtonItem?.tintColor = .white
         //set tab titles
-        mapViewController.tabBarItem.title = "Map"
         profileViewController.tabBarItem.title = "Profile"
         
         tabBar.tintColor = .white
@@ -101,10 +102,6 @@ class TabViewController : UITabBarController {
             mapNavController,
             profileNavController
         ]
-        
-
-        
-        
     }
     
 }
