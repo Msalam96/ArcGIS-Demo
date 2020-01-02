@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController {
 
     var data: [Int] = Array(10..<20)
     var userData: [String] = Array()
+    var timer = Timer()
     
         
     var auth:AGS?
@@ -53,10 +54,23 @@ class ProfileViewController: UIViewController {
         self.collectionView.register(Cell.self, forCellWithReuseIdentifier: Cell.identifier)
         self.collectionView.alwaysBounceVertical = true
         self.collectionView.backgroundColor = .white
-        
+//
+        timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
+        let resetTimer = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.resetTimer));
+        self.view.isUserInteractionEnabled = true
+        self.view.addGestureRecognizer(resetTimer)
+
         
     }
-    
+    @objc func doStuff() {
+       // perform any action you wish to
+       print("User inactive for more than 5 seconds .")
+       timer.invalidate()
+    }
+    @objc func resetTimer() {
+       timer.invalidate()
+       timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
+    }
     override func viewDidAppear(_ animated: Bool) {
         let userViewModel = UserDisplayViewModel(userPortal: auth!)
         
