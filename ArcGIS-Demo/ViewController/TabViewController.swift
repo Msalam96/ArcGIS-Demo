@@ -43,7 +43,7 @@ class TabViewController : UITabBarController {
         let mapViewController = MapViewController()
         
         //set its background color to red
-        mapViewController.view.backgroundColor = .red
+        //mapViewController.view.backgroundColor = .red
         
         //set its title to Map
         mapViewController.navigationItem.title = "Map"

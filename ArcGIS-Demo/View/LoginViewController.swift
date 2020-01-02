@@ -11,83 +11,19 @@ import ArcGIS
 
 class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
      
-     static let NotificationDone = NSNotification.Name(rawValue: "Done")
-     
      private var auth = AGS()
-//     var auth:AGS?
-
-     private let loginContentView:UIView = {
-          let view = UIView()
-          view.translatesAutoresizingMaskIntoConstraints = false
-          view.backgroundColor = .white
-          return view
-     }()
+     private var loginView = LoginView()
      
-     private let usernameTextField:UITextField = {
-          let textField = UITextField()
-          textField.backgroundColor = .white
-          textField.borderStyle = .roundedRect
-          textField.translatesAutoresizingMaskIntoConstraints = false
-          return textField
-     }()
-     
-     private let passwordTextField:UITextField = {
-          let textField = UITextField()
-          textField.backgroundColor = .white
-          textField.borderStyle = .roundedRect
-          textField.translatesAutoresizingMaskIntoConstraints = false
-          return textField
-     }()
-     
-     let loginButton:UIButton = {
-          let btn = UIButton(type:.system)
-          btn.backgroundColor = .systemTeal
-          btn.setTitle("Login", for: .normal)
-          btn.tintColor = .white
-          btn.layer.cornerRadius = 5
-          btn.clipsToBounds = true
-          btn.translatesAutoresizingMaskIntoConstraints = false
-          btn.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-          return btn
-     }()
-     
-     func setUpAutoLayout(){
-          loginContentView.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
-          loginContentView.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
-          loginContentView.heightAnchor.constraint(equalToConstant: view.frame.height/3).isActive = true
-          loginContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-          
-          usernameTextField.topAnchor.constraint(equalTo:loginContentView.topAnchor, constant:40).isActive = true
-          usernameTextField.heightAnchor.constraint(equalToConstant:50).isActive = true
-          usernameTextField.leftAnchor.constraint(equalTo:loginContentView.leftAnchor, constant:20).isActive = true
-          usernameTextField.rightAnchor.constraint(equalTo:loginContentView.rightAnchor, constant:-20).isActive = true
-          
-          passwordTextField.topAnchor.constraint(equalTo:usernameTextField.bottomAnchor, constant:20).isActive = true
-          passwordTextField.heightAnchor.constraint(equalToConstant:50).isActive = true
-          passwordTextField.leftAnchor.constraint(equalTo:loginContentView.leftAnchor, constant:20).isActive = true
-          passwordTextField.rightAnchor.constraint(equalTo:loginContentView.rightAnchor, constant:-20).isActive = true
-          
-          loginButton.topAnchor.constraint(equalTo:passwordTextField.bottomAnchor, constant:20).isActive = true
-          loginButton.leftAnchor.constraint(equalTo:loginContentView.leftAnchor, constant:20).isActive = true
-          loginButton.rightAnchor.constraint(equalTo:loginContentView.rightAnchor, constant:-20).isActive = true
-          loginButton.heightAnchor.constraint(equalToConstant:50).isActive = true
-     }
-     
-     @objc func buttonAction(sender: UIButton!) {
-          if usernameTextField.text?.isEmpty ?? false || passwordTextField.text?.isEmpty ?? false{
-               let alert = UIAlertController(title: "Error", message: "Username and Password Must Be Filled", preferredStyle: UIAlertController.Style.alert)
-               alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-               self.present(alert, animated: true, completion: nil)
-          } else {
-               print("its haddening")
-               let credentials = AGSCredential(user: usernameTextField.text!, password: passwordTextField.text!)
-               auth.activeChallenge?.continue(with: credentials)
-          }
+     func setupConstraints(){
+          loginView.loginContentView.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
+          loginView.loginContentView.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
+          loginView.loginContentView.heightAnchor.constraint(equalToConstant: view.frame.height/3).isActive = true
+          loginView.loginContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
      }
      
      override func viewDidLoad() {
           super.viewDidLoad()
-          view.backgroundColor = .lightGray
+          view.backgroundColor = .orange
           AGSAuthenticationManager.shared().delegate = self
           
           auth.portal.load() {[weak self] (error) in
@@ -95,34 +31,34 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
                     print(error)
                     return
                }
-               // check the portal item loaded and print the modified date
                if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
-                    let fullName = self?.auth.portal.user?.fullName
                     let vc = TabViewController(ags: self!.auth)
                     vc.modalPresentationStyle = .fullScreen
-                    //NotificationCenter.default.post(name: LoginViewController.NotificationDone, object: nil)
                     self?.present(vc, animated: true, completion: nil)
-                    //self?.present(newViewController, animated: true)
-                    print(fullName!)
-                    
-               } else {
-                    print("yeet")
-                    let alert = UIAlertController(title: "Error", message: "Invalid Username or Password", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-                    self?.present(alert, animated: true, completion: nil)
                }
           }
-          print("tst")
+     }
+     
+     @objc func buttonAction(sender: UIButton!) {
+          if loginView.usernameTextField.text!.isEmpty || loginView.passwordTextField.text!.isEmpty {
+               let alert = UIAlertController(title: "Error", message: "Username and Password Must Be Filled", preferredStyle: UIAlertController.Style.alert)
+               alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+               present(alert, animated: true, completion: nil)
+          } else {
+               let credentials = AGSCredential(user: loginView.usernameTextField.text!, password: loginView.passwordTextField.text!)
+               auth.activeChallenge?.continue(with: credentials)
+          }
      }
      
      func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
           auth.activeChallenge = challenge
-          loginContentView.addSubview(usernameTextField)
-          loginContentView.addSubview(passwordTextField)
-          loginContentView.addSubview(loginButton)
-          view.addSubview(loginContentView)
-          setUpAutoLayout()
-          
+          loginView.loginContentView.addSubview(loginView.usernameTextField)
+          loginView.loginContentView.addSubview(loginView.passwordTextField)
+          loginView.loginContentView.addSubview(loginView.loginButton)
+          view.addSubview(loginView.loginContentView)
+          loginView.loginButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+          setupConstraints()
+          loginView.setUpAutoLayout()
           //        let credentials = AGSCredential(user: "brandontod97", password: "wyrsuz-wyhwo6-Wefmyw")
      }
 }
