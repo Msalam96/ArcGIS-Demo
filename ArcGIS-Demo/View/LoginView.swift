@@ -26,50 +26,19 @@ class LoginView:UIView, UIGestureRecognizerDelegate {
         return view
     }()
     
-    let usernameTextField:UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .white
-        textField.borderStyle = .none
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.spellCheckingType = .no
-        textField.placeholder = " Username"
-        textField.layer.shadowColor = UIColor.black.cgColor
-        textField.layer.borderColor = UIColor.red.cgColor
-        textField.layer.borderWidth = 3.0
-        textField.layer.cornerRadius = 10
+    let usernameTextField:CustomTextField = {
+        let textField = CustomTextField()
+        textField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.orange, NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 20)!])
         return textField
     }()
     
-    let passwordTextField:UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .white
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.autocapitalizationType = .none
-        textField.spellCheckingType = .no
-        textField.placeholder = "Password"
+    let passwordTextField:CustomTextField = {
+        let textField = CustomTextField()
+        textField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.orange, NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 20)!])
         return textField
     }()
     
-    let loginButton:UIButton = {
-        let btn = UIButton(type:. system)
-        btn.layer.shadowColor = UIColor.black.cgColor
-        btn.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
-        btn.layer.shadowRadius = 8
-        btn.layer.shadowOpacity = 0.5
-        btn.backgroundColor = .systemOrange
-        btn.setTitle("Login", for: .normal)
-        btn.tintColor = .white
-        btn.layer.cornerRadius = 5
-        btn.clipsToBounds = true
-        btn.layer.masksToBounds = false
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.layer.cornerRadius = 25
-        btn.layer.borderWidth = 3.0
-        btn.layer.borderColor = UIColor.lightGray.cgColor
-        btn.titleLabel!.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
-        return btn
-    }()
+    var loginButton:CustomButton = CustomButton()
     
     let githubButton:UIButton = {
         let btn = UIButton(type: .custom)
@@ -79,12 +48,10 @@ class LoginView:UIView, UIGestureRecognizerDelegate {
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.imageView?.contentMode = .scaleAspectFit
         btn.addTarget(self, action: #selector(LoginViewController.github), for: .touchUpInside)
-        btn.showsTouchWhenHighlighted = true
         return btn
     }()
     
     func setUpAutoLayout(){
-        
         usernameTextField.topAnchor.constraint(equalTo:loginContentView.topAnchor, constant:40).isActive = true
         usernameTextField.heightAnchor.constraint(equalToConstant:50).isActive = true
         usernameTextField.leftAnchor.constraint(equalTo:loginContentView.leftAnchor, constant:20).isActive = true
@@ -99,8 +66,5 @@ class LoginView:UIView, UIGestureRecognizerDelegate {
         loginButton.leftAnchor.constraint(equalTo:loginContentView.leftAnchor, constant:20).isActive = true
         loginButton.rightAnchor.constraint(equalTo:loginContentView.rightAnchor, constant:-20).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-//        githubButton.topAnchor.constraint(equalTo:loginButton.bottomAnchor, constant: 20).isActive = true
     }
-    
 }

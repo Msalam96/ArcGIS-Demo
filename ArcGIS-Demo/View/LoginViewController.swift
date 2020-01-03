@@ -39,9 +39,10 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
           AGSAuthenticationManager.shared().delegate = self
           
           auth.portal.load() {[weak self] (error) in
-               if let error = error {
-                    print(error)
-                    return
+               if (error != nil) {
+                    let alert = UIAlertController(title: "Error", message: "Username or Password Does Not Match", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+                    self!.present(alert, animated: true, completion: nil)
                }
                if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
                     let vc = TabViewController(ags: self!.auth)
@@ -51,7 +52,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
           }
      }
      
-     @objc func buttonAction(sender: UIButton!) {
+     @objc func login(sender: UIButton!) {
           if loginView.usernameTextField.text!.isEmpty || loginView.passwordTextField.text!.isEmpty {
                let alert = UIAlertController(title: "Error", message: "Username and Password Must Be Filled", preferredStyle: UIAlertController.Style.alert)
                alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
@@ -73,8 +74,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
           loginView.loginContentView.addSubview(loginView.loginButton)
           view.addSubview(loginView.loginContentView)
           view.addSubview(loginView.githubButton)
-          loginView.loginButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-          //loginView.githubButton.addTarget(self, action: #selector(github), for: .touchUpInside)
+          loginView.loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
           setupConstraints()
           loginView.setUpAutoLayout()
           //        let credentials = AGSCredential(user: "brandontod97", password: "wyrsuz-wyhwo6-Wefmyw")

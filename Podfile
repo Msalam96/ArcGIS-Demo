@@ -3,5 +3,4 @@
 
 target 'ArcGIS-Demo' do
   pod 'ArcGIS-Runtime-SDK-iOS', '~> 100.7'
-  pod 'MaterialComponents/TextFields'
 end
