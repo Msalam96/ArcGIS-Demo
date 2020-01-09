@@ -45,6 +45,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
                     self!.present(alert, animated: true, completion: nil)
                }
                if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
+                    // TO DO: Change how to pass data between controllers
                     let vc = TabViewController(ags: self!.auth)
                     vc.modalPresentationStyle = .fullScreen
                     self?.present(vc, animated: true, completion: nil)
@@ -69,9 +70,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
      
      func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
           auth.activeChallenge = challenge
-          loginView.loginContentView.addSubview(loginView.usernameTextField)
-          loginView.loginContentView.addSubview(loginView.passwordTextField)
-          loginView.loginContentView.addSubview(loginView.loginButton)
+          loginView.addtoSubView()
           view.addSubview(loginView.loginContentView)
           view.addSubview(loginView.githubButton)
           loginView.loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
@@ -79,5 +78,4 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
           loginView.setUpAutoLayout()
           //        let credentials = AGSCredential(user: "brandontod97", password: "wyrsuz-wyhwo6-Wefmyw")
      }
-    
 }

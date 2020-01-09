@@ -31,7 +31,7 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
     init(auth: AGS) {
         super.init(nibName: nil, bundle: nil)
         self.auth = auth
-        self.map.featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/FeatureServer/0"
+        //self.map.featureServiceURL = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/FeatureServer/0"
     }
     
     required init?(coder: NSCoder) {

@@ -67,4 +67,10 @@ class LoginView:UIView, UIGestureRecognizerDelegate {
         loginButton.rightAnchor.constraint(equalTo:loginContentView.rightAnchor, constant:-20).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
+    
+    func addtoSubView(){
+        loginContentView.addSubview(usernameTextField)
+        loginContentView.addSubview(passwordTextField)
+        loginContentView.addSubview(loginButton)
+    }
 }

@@ -18,6 +18,7 @@ class CustomButton:UIButton {
 //        self.layer.shadowOpacity = 0.5
         self.backgroundColor = .systemOrange
         self.setTitle("Login", for: .normal)
+        self.tintColor = .red
         self.tintColor = .white
         self.layer.cornerRadius = 5
         self.clipsToBounds = true
@@ -26,7 +27,7 @@ class CustomButton:UIButton {
         self.layer.cornerRadius = 25
         self.layer.borderWidth = 3.0
         self.layer.borderColor = UIColor.black.cgColor
-        self.titleLabel!.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
+        self.titleLabel!.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 25)
         self.titleLabel?.isHighlighted = true
     }
     
