@@ -24,6 +24,7 @@ class LoginView:UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.spellCheckingType = .no
         textField.placeholder = "Username"
+        textField.text = "Brandontod97"
         return textField
     }()
     
@@ -35,6 +36,7 @@ class LoginView:UIView {
         textField.autocapitalizationType = .none
         textField.spellCheckingType = .no
         textField.placeholder = "Password"
+        textField.text = "wyrsuz-wyhwo6-Wefmyw"
         return textField
     }()
     
