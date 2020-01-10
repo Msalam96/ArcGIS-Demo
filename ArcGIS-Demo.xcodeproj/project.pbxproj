@@ -150,7 +150,7 @@
 				CA8657E723AD30AD00A510DD /* MapViewController.swift */,
 				CA88B93323BE52B0008CBD70 /* MapViewControllerORIGINAL.swift */,
 				CA8657ED23B4F89800A510DD /* TabViewController.swift */,
-				2DCE0B1023B50D0C00916620 /* ProfileViewController.swift */
+				2DCE0B1023B50D0C00916620 /* ProfileViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
