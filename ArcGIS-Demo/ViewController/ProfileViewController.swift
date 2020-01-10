@@ -64,6 +64,8 @@ class ProfileViewController: UIViewController {
 }
 
 //
+
+    @objc func resetTimer(){
         timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
         let resetTimer = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.resetTimer));
         self.view.isUserInteractionEnabled = true
