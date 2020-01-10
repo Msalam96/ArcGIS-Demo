@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1008F8B823BF8511000F89CC /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008F8B723BF8511000F89CC /* CustomTextField.swift */; };
+		1008F8BA23BF87CE000F89CC /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008F8B923BF87CE000F89CC /* CustomButton.swift */; };
 		10CD1CE923BB8F3400CBBA5B /* AGS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD1CE823BB8F3400CBBA5B /* AGS.swift */; };
 		10CD1CEB23BB92E400CBBA5B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD1CEA23BB92E400CBBA5B /* LoginView.swift */; };
 		10CD1CED23BBA21000CBBA5B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD1CEC23BBA21000CBBA5B /* LoginViewModel.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1008F8B723BF8511000F89CC /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTextField.swift; path = "ArcGIS-Demo/View/CustomTextField.swift"; sourceTree = SOURCE_ROOT; };
+		1008F8B923BF87CE000F89CC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomButton.swift; path = "ArcGIS-Demo/View/CustomButton.swift"; sourceTree = SOURCE_ROOT; };
 		10CD1CE823BB8F3400CBBA5B /* AGS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AGS.swift; path = "ArcGIS-Demo/View/AGS.swift"; sourceTree = SOURCE_ROOT; };
 		10CD1CEA23BB92E400CBBA5B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		10CD1CEC23BBA21000CBBA5B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = "ArcGIS-Demo/View/LoginViewModel.swift"; sourceTree = SOURCE_ROOT; };
@@ -115,6 +119,8 @@
 				10CD1CE823BB8F3400CBBA5B /* AGS.swift */,
 				CA88B93123BE46EA008CBD70 /* Map.swift */,
 				2DCE0B1C23BDC7D600916620 /* Cell.swift */,
+				1008F8B723BF8511000F89CC /* CustomTextField.swift */,
+				1008F8B923BF87CE000F89CC /* CustomButton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 				CA88B93423BE52B0008CBD70 /* MapViewControllerORIGINAL.swift in Sources */,
 				10D5133E23AD2DF000AE4C33 /* LoginViewController.swift in Sources */,
 				10CD1CEB23BB92E400CBBA5B /* LoginView.swift in Sources */,
+				1008F8B823BF8511000F89CC /* CustomTextField.swift in Sources */,
 				10CD1CE923BB8F3400CBBA5B /* AGS.swift in Sources */,
 				10E9D8E723AB016D00ED8115 /* ViewController.swift in Sources */,
 				10CD1CED23BBA21000CBBA5B /* LoginViewModel.swift in Sources */,
@@ -415,6 +422,7 @@
 				CA8657EE23B4F89800A510DD /* TabViewController.swift in Sources */,
 				2DCE0B1B23BBBA9B00916620 /* ProfileViewController.swift in Sources */,
 				2DCE0B1D23BDC7D600916620 /* Cell.swift in Sources */,
+				1008F8BA23BF87CE000F89CC /* CustomButton.swift in Sources */,
 				10E9D8E523AB016D00ED8115 /* SceneDelegate.swift in Sources */,
 				2DCE0B1F23BE32C400916620 /* UserDisplayViewModel.swift in Sources */,
 				CAE965C023BBA2C300766912 /* MapViewModel.swift in Sources */,
