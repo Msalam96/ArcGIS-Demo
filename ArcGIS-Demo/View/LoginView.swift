@@ -8,7 +8,16 @@
 import Foundation
 import UIKit
 
-class LoginView:UIView {
+class LoginView:UIView, UIGestureRecognizerDelegate {
+
+    let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.alpha = 0.8
+        imageView.image = UIImage(named: "gislogo")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
     
     let loginContentView:UIView = {
         let view = UIView()
@@ -17,35 +26,28 @@ class LoginView:UIView {
         return view
     }()
     
-    let usernameTextField:UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .white
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.spellCheckingType = .no
-        textField.placeholder = "Username"
+    let usernameTextField:CustomTextField = {
+        let textField = CustomTextField()
+        textField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.orange, NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 20)!])
         return textField
     }()
     
-    let passwordTextField:UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .white
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.autocapitalizationType = .none
-        textField.spellCheckingType = .no
-        textField.placeholder = "Password"
+    let passwordTextField:CustomTextField = {
+        let textField = CustomTextField()
+        textField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.orange, NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 20)!])
         return textField
     }()
     
-    let loginButton:UIButton = {
-        let btn = UIButton(type:.system)
-        btn.backgroundColor = .systemTeal
-        btn.setTitle("Login", for: .normal)
-        btn.tintColor = .white
-        btn.layer.cornerRadius = 5
+    var loginButton:CustomButton = CustomButton()
+    
+    let githubButton:UIButton = {
+        let btn = UIButton(type: .custom)
+        let image = UIImage(named: "githublogo")
+        btn.setImage(image, for: .normal)
         btn.clipsToBounds = true
         btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.imageView?.contentMode = .scaleAspectFit
+        btn.addTarget(self, action: #selector(LoginViewController.github), for: .touchUpInside)
         return btn
     }()
     
@@ -63,7 +65,12 @@ class LoginView:UIView {
         loginButton.topAnchor.constraint(equalTo:passwordTextField.bottomAnchor, constant:20).isActive = true
         loginButton.leftAnchor.constraint(equalTo:loginContentView.leftAnchor, constant:20).isActive = true
         loginButton.rightAnchor.constraint(equalTo:loginContentView.rightAnchor, constant:-20).isActive = true
-        loginButton.heightAnchor.constraint(equalToConstant:50).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
+    func addtoSubView(){
+        loginContentView.addSubview(usernameTextField)
+        loginContentView.addSubview(passwordTextField)
+        loginContentView.addSubview(loginButton)
+    }
 }

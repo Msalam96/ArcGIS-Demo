@@ -69,7 +69,7 @@ class ProfileViewController: UIViewController {
     
     @objc func resetTimer() {
        timer.invalidate()
-       timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
+       timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
