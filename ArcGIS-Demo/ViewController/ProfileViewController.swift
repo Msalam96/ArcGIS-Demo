@@ -1,4 +1,3 @@
-
 //
 //  ViewController.swift
 //  cvcell
@@ -8,7 +7,9 @@
 //
 
 import UIKit
+
 import ArcGIS
+
 
 class ProfileViewController: UIViewController {
 
@@ -31,8 +32,7 @@ class ProfileViewController: UIViewController {
     required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
-    
-    
+
     override func loadView() {
         super.loadView()
 
@@ -49,6 +49,7 @@ class ProfileViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+      
         AGSAuthenticationManager.shared().credentialCache.enableAutoSyncToKeychain(withIdentifier: "ArcGIS-Demo", accessGroup: nil, acrossDevices: false)
         
         super.viewDidLoad()
@@ -58,6 +59,10 @@ class ProfileViewController: UIViewController {
         self.collectionView.register(Cell.self, forCellWithReuseIdentifier: Cell.identifier)
         self.collectionView.alwaysBounceVertical = true
         self.collectionView.backgroundColor = .white
+
+    }
+}
+
 //
         timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
         let resetTimer = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.resetTimer));
@@ -86,24 +91,19 @@ class ProfileViewController: UIViewController {
     }
 }
 
-
-
 extension ProfileViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 4
+
+        return self.data.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.identifier, for: indexPath) as! Cell
-        let displayModel = UserDisplayViewModel(userPortal: auth!)
-        
-        let toDisplay = displayModel.displayUserInfo()
-        let data = toDisplay[indexPath.item]
-        //let data = auth?.portal.user?.fullName
-        cell.textLabel.text = String(data!)
+        let data = self.data[indexPath.item]
+        cell.textLabel.text = String(data)
         return cell
     }
 }
@@ -141,4 +141,3 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
-
