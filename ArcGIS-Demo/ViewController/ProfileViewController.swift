@@ -89,7 +89,7 @@ class ProfileViewController: UIViewController {
 //        self.collectionView.alwaysBounceVertical = true
 //        self.collectionView.backgroundColor = .white
 //
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
         //let resetTimer = UITapGestureRecognizer(target: self, action: //#selector(ProfileViewController.resetTimer));
         //self.view.isUserInteractionEnabled = true
         //self.view.addGestureRecognizer(resetTimer)
@@ -102,7 +102,7 @@ class ProfileViewController: UIViewController {
     
     @objc func resetTimer() {
        timer.invalidate()
-       timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
+       timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
     }
     
     @objc func logOut(sender: UIButton!) {
@@ -113,6 +113,8 @@ class ProfileViewController: UIViewController {
     }
     
 }
+
+
 
 extension ProfileViewController: UICollectionViewDragDelegate
 {
@@ -129,6 +131,8 @@ extension ProfileViewController: UICollectionViewDragDelegate
         
         return [dragItem]
     }
+    
+    
 }
 
 //FOR CELL INITIZILATION(How many cells we want, and what kind of data the cells have)
@@ -140,6 +144,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         return 4
     }
 
+    
     //Sets up the size of the cell
     func collectionView(_ collectionView: UICollectionView,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
