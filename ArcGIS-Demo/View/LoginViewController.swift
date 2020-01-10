@@ -4,8 +4,6 @@
 //
 //  Created by Mohammed Salam on 12/27/19.
 //  Copyright © 2019 BMS. All rights reserved.
-//
-
 import Foundation
 import ArcGIS
 

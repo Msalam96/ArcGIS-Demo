@@ -8,7 +8,7 @@
 import UIKit
 import ArcGIS
 
-class UserDisplayViewModel
+struct UserDisplayViewModel
 {
     let userPortal: AGS
    
@@ -17,14 +17,12 @@ class UserDisplayViewModel
         self.userPortal = userPortal
     }
     
-    func displayUserInfo() -> [String?]
+    func displayUserInfo() -> [String]
     {
-        var toDisplay: String?
-        let displayArray: [String?] = [("Name: \(self.userPortal.portal.user?.fullName?.description ?? "")"), "Email: \(self.userPortal.portal.user?.email?.description ?? "")", ("Date Created: \(self.userPortal.portal.user?.created?.description ?? "")"),
+        var toDisplay: String
+        let displayArray: [String] = [("Name: \(self.userPortal.portal.user?.fullName?.description ?? "")"), "Email: \(self.userPortal.portal.user?.email?.description ?? "")", ("Date Created: \(self.userPortal.portal.user?.created?.description ?? "")"),
                                        ("User Name: \(self.userPortal.portal.user?.username?.description ?? "")")
         ]
-        
-        
      return displayArray
     }
     
