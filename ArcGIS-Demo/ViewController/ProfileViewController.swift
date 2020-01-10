@@ -59,21 +59,20 @@ class ProfileViewController: UIViewController {
         self.collectionView.alwaysBounceVertical = true
         self.collectionView.backgroundColor = .white
 //
+    }
 
     @objc func resetTimer(){
         timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
         let resetTimer = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.resetTimer));
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(resetTimer)
-
-        
     }
     
-    @objc func resetTimer() {
-       timer.invalidate()
-       timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
-    }
-    
+//    @objc func resetTimer() {
+//       timer.invalidate()
+//       timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
+//    }
+//
     override func viewDidAppear(_ animated: Bool) {
         let userViewModel = UserDisplayViewModel(userPortal: auth!)
         
