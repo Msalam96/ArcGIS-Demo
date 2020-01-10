@@ -7,12 +7,32 @@
 //
 
 import UIKit
+
+import ArcGIS
+
+
 class ProfileViewController: UIViewController {
 
     weak var collectionView: UICollectionView!
 
-    var data: [Int] = Array(0..<10)
+    var data: [Int] = Array(10..<20)
+    var userData: [String] = Array()
+    var timer = Timer()
     
+        
+    var auth:AGS?
+
+    
+    init(auth:AGS) {
+            super.init(nibName: nil, bundle: nil)
+            self.auth = auth
+            
+        }
+    
+    required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+
     override func loadView() {
         super.loadView()
 
@@ -29,6 +49,9 @@ class ProfileViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+      
+        AGSAuthenticationManager.shared().credentialCache.enableAutoSyncToKeychain(withIdentifier: "ArcGIS-Demo", accessGroup: nil, acrossDevices: false)
+        
         super.viewDidLoad()
 
         self.collectionView.dataSource = self
@@ -36,6 +59,35 @@ class ProfileViewController: UIViewController {
         self.collectionView.register(Cell.self, forCellWithReuseIdentifier: Cell.identifier)
         self.collectionView.alwaysBounceVertical = true
         self.collectionView.backgroundColor = .white
+
+    }
+}
+
+//
+        timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
+        let resetTimer = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.resetTimer));
+        self.view.isUserInteractionEnabled = true
+        self.view.addGestureRecognizer(resetTimer)
+
+        
+    }
+    
+    @objc func resetTimer() {
+       timer.invalidate()
+       timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let userViewModel = UserDisplayViewModel(userPortal: auth!)
+        
+        //print(userViewModel.displayUserInfo())
+    }
+    
+    @objc func logOut(sender: UIButton!) {
+        AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
+        let vc = LoginViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
@@ -43,6 +95,7 @@ extension ProfileViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
+
         return self.data.count
     }
     
