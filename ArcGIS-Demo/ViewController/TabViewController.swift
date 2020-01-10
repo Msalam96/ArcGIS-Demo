@@ -28,9 +28,6 @@ class TabViewController : UITabBarController {
                 
         super.viewDidLoad()
         
-        //TODO: replace UIViewController with the actual view controllers
-        let mapViewController = UIViewController()
-        let profileViewController = ProfileViewController()
 
         //presentSecondViewController()
         
@@ -97,10 +94,7 @@ class TabViewController : UITabBarController {
        profileViewController.navigationItem.rightBarButtonItem?.tintColor = .white
         //set tab titles
         profileViewController.tabBarItem.title = "Profile"
-
-        //DEBUGGING: change background color
-        mapViewController.view.backgroundColor = .blue
-      
+        
         tabBar.tintColor = .white
         tabBar.barTintColor = .orange
         
