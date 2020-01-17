@@ -20,11 +20,11 @@ struct UserDisplayViewModel
     func displayUserInfo() -> [String]
     {
         var toDisplay: String
-        let displayArray: [String] = [("Name: \(self.userPortal.portal.user?.fullName?.description ?? "")"), "Email: \(self.userPortal.portal.user?.email?.description ?? "")", ("Date Created: \(self.userPortal.portal.user?.created?.description ?? "")"),
+        let displayArray: [String] = [("Name: \(self.userPortal.portal.user?.fullName?.description ?? "")"), "Email: \(self.userPortal.portal.user?.email?.description ?? "")",
                                        ("User Name: \(self.userPortal.portal.user?.username?.description ?? "")")
         ]
      return displayArray
     }
-    
+    //("Date Created: \(self.userPortal.portal.user?.created?.description ?? "")"),
     
 }

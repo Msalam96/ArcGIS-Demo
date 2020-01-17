@@ -125,8 +125,6 @@ class ProfileViewController: UIViewController {
     
 }
 
-
-
 extension ProfileViewController: UICollectionViewDragDelegate
 {
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
@@ -152,7 +150,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     //Returns the number of cells in collectionView
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
 
     
@@ -168,23 +166,23 @@ extension ProfileViewController: UICollectionViewDataSource {
         let displayModel = UserDisplayViewModel(userPortal: auth!)
     
         
-//         cell.contentView.layer.cornerRadius = 2.0
-//         cell.contentView.layer.borderWidth = 1.0
-//         cell.contentView.layer.borderColor = UIColor.clear.cgColor
-//         cell.contentView.layer.masksToBounds = true;
-//         //cell.layer.shadowColor = UIColor.lightGray.cgColor
-//         cell.layer.shadowOffset = CGSize(width:0,height: 2.0)
-//         cell.layer.shadowRadius = 2.0
-//         cell.layer.shadowOpacity = 1.0
-//         cell.layer.masksToBounds = false;
-//         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
+        cell.contentView.layer.cornerRadius = 2.0
+         cell.contentView.layer.borderWidth = 1.0
+         cell.contentView.layer.borderColor = UIColor.clear.cgColor
+         cell.contentView.layer.masksToBounds = true;
+         //cell.layer.shadowColor = UIColor.lightGray.cgColor
+         cell.layer.shadowOffset = CGSize(width:0,height: 2.0)
+         cell.layer.shadowRadius = 2.0
+         cell.layer.shadowOpacity = 1.0
+         cell.layer.masksToBounds = false;
+         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         
         let toDisplay = displayModel.displayUserInfo()
         let data = toDisplay[indexPath.item]
         //let data = auth?.portal.user?.fullName
-        //cell.textLabel.text = String(data)
+        cell.textLabel.text = String(data)
         
-        cell.backgroundColor = .clear
+        cell.backgroundColor = .white
 
             return cell
     }
@@ -200,7 +198,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         
         else{
             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footerId", for: indexPath)
-                  footer.backgroundColor = .white
+                  footer.backgroundColor = .green
                   return footer
         }
       

@@ -13,11 +13,12 @@ class Cell: UICollectionViewCell {
     
     weak var textLabel: UILabel!
     
-    let iconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .red
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    let iconImageView: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Test text lets see if it prints out"
+        
+        return label
     }()
 
     let separatorView: UIView = {
@@ -47,6 +48,7 @@ class Cell: UICollectionViewCell {
             self.contentView.centerXAnchor.constraint(equalTo: textLabel.centerXAnchor),
             self.contentView.centerYAnchor.constraint(equalTo: textLabel.centerYAnchor),
         ])
+//        addConstraints(NSLayoutConstraint.constraints(withVisualFormat:"V:|-50-[v0]-16-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views:["v0":textLabel]))
         self.textLabel = textLabel
         self.reset()
     }
@@ -60,12 +62,12 @@ class Cell: UICollectionViewCell {
                                         //|-  => represents the left most corner of the screen
                                         //-|  => represents the right most corner of
                                         //[v0]  => represents the subview in this case it is the iconImageView, which has the cell as its parentView
-        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: iconImageView)
+        addConstraintsWithFormat(format: "H:|-75-[v0]-16-|", views: iconImageView)
         
         
-        addConstraintsWithFormat(format: "H:|-16-[v0(44)]", views: userProfileImageView)
+        addConstraintsWithFormat(format: "H:|-4-[v0(34)]", views: userProfileImageView)
         //vertical constraints
-        addConstraintsWithFormat(format:  "V:|-8-[v0]-8-[v1(34)]-16-[v2(1)]|", views: iconImageView, userProfileImageView, separatorView)
+        addConstraintsWithFormat(format:  "V:|-8-[v0]-8-[v1(34)]-8-[v2(1)]|", views: iconImageView, userProfileImageView, separatorView)
         
         addConstraintsWithFormat(format:"H:|[v0]|", views: separatorView)
         
