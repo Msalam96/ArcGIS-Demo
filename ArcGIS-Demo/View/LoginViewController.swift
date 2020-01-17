@@ -78,6 +78,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
           UIApplication.shared.open(URL(string: "https://github.com/Msalam96/ArcGIS-Demo")!)
      }
      
+
      func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
           auth.activeChallenge = challenge
      }
