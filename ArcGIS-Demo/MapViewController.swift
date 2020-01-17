@@ -50,6 +50,8 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
         //initialize and declare the mapview to a new map view
         mapView = AGSMapView()
         
+        mapView.wrapAroundMode = AGSWrapAroundMode.enabledWhenSupported
+        
         //set up the map
         setupMap()
         
@@ -63,11 +65,12 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
     //MARK: Refresh map
     @objc public func RefreshMap() {
         
-        let portalItem = AGSPortalItem(portal: auth!.portal, itemID: "2f1fd68a58a14656bd6625cd681873e5")
+        let portalItem = AGSPortalItem(portal: auth!.portal, itemID: "cac570efac634702ac08aa6022220738")
         let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5,y: UIScreen.main.bounds.size.height*0.5)
         
         var screenlocation = mapView.screen(toLocation: frameSize)
         
+        mapView.map = nil
         let portalMap = AGSMap(item: portalItem)
         self.mapView.setViewpointCenter(screenlocation, completion: nil)
         mapView.map = portalMap
