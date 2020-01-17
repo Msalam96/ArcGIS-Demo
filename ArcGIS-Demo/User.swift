@@ -18,7 +18,5 @@ struct User{
         self.email = email
         self.userName = userName
         self.dateCreated = dateCreated
-    }
-    
-    
+    } 
 }

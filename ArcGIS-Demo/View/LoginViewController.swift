@@ -11,6 +11,9 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
      
      private var auth = AGS()
      private var loginView = LoginView()
+     private var credentials = AGSCredential()
+     
+     private var loggedin:UInt = 1
      
      func setupConstraints(){
           loginView.loginContentView.insertSubview(loginView.logoImageView, aboveSubview: view)
@@ -35,20 +38,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
           view.backgroundColor = .white
           
           AGSAuthenticationManager.shared().delegate = self
-          
-          auth.portal.load() {[weak self] (error) in
-               if (error != nil) {
-                    let alert = UIAlertController(title: "Error", message: "Username or Password Does Not Match", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-                    self!.present(alert, animated: true, completion: nil)
-               }
-               if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
-                    // TO DO: Change how to pass data between controllers
-                    let vc = TabViewController(ags: self!.auth)
-                    vc.modalPresentationStyle = .fullScreen
-                    self?.present(vc, animated: true, completion: nil)
-               }
-          }
+          loadPortal()
      }
      
      @objc func login(sender: UIButton!) {
@@ -57,7 +47,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
                alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
                present(alert, animated: true, completion: nil)
           } else {
-               let credentials = AGSCredential(user: loginView.usernameTextField.text!, password: loginView.passwordTextField.text!)
+               credentials = AGSCredential(user: loginView.usernameTextField.text!, password: loginView.passwordTextField.text!)
                auth.activeChallenge?.continue(with: credentials)
           }
      }
@@ -75,5 +65,16 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
           setupConstraints()
           loginView.setUpAutoLayout()
           //        let credentials = AGSCredential(user: "brandontod97", password: "wyrsuz-wyhwo6-Wefmyw")
+     }
+     
+     func loadPortal() {
+          auth.portal.load() {[weak self] (error) in
+               if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
+                    // TO DO: Change how to pass data between controllers
+                    let vc = TabViewController(ags: self!.auth)
+                    vc.modalPresentationStyle = .fullScreen
+                    self?.present(vc, animated: true, completion: nil)
+               }
+          }
      }
 }

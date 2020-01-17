@@ -26,17 +26,9 @@ class LoginView:UIView, UIGestureRecognizerDelegate {
         return view
     }()
 
-    let usernameTextField:CustomTextField = {
-        let textField = CustomTextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.orange, NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 20)!])
-        return textField
-    }()
+    var usernameTextField:CustomTextField = CustomTextField()
     
-    let passwordTextField:CustomTextField = {
-        let textField = CustomTextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.orange, NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 20)!])
-        return textField
-    }()
+    var passwordTextField:CustomTextField = CustomTextField()
     
     var loginButton:CustomButton = CustomButton()
     
@@ -52,11 +44,15 @@ class LoginView:UIView, UIGestureRecognizerDelegate {
     }()
     
     func setUpAutoLayout(){
+        usernameTextField.addImage(image: "user")
+        usernameTextField.changePlaceHolder(text: "Username", font: "AppleSDGothicNeo-Bold")
         usernameTextField.topAnchor.constraint(equalTo:loginContentView.topAnchor, constant:40).isActive = true
         usernameTextField.heightAnchor.constraint(equalToConstant:50).isActive = true
         usernameTextField.leftAnchor.constraint(equalTo:loginContentView.leftAnchor, constant:20).isActive = true
         usernameTextField.rightAnchor.constraint(equalTo:loginContentView.rightAnchor, constant:-20).isActive = true
         
+        passwordTextField.addImage(image: "password")
+        passwordTextField.changePlaceHolder(text: "Password", font: "AppleSDGothicNeo-Bold")
         passwordTextField.topAnchor.constraint(equalTo:usernameTextField.bottomAnchor, constant:20).isActive = true
         passwordTextField.heightAnchor.constraint(equalToConstant:50).isActive = true
         passwordTextField.leftAnchor.constraint(equalTo:loginContentView.leftAnchor, constant:20).isActive = true
