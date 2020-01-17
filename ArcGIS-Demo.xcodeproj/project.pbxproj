@@ -30,7 +30,6 @@
 		CA8657E823AD30AD00A510DD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8657E723AD30AD00A510DD /* MapViewController.swift */; };
 		CA8657EE23B4F89800A510DD /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8657ED23B4F89800A510DD /* TabViewController.swift */; };
 		CA88B93223BE46EA008CBD70 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88B93123BE46EA008CBD70 /* Map.swift */; };
-		CA88B93423BE52B0008CBD70 /* MapViewControllerORIGINAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88B93323BE52B0008CBD70 /* MapViewControllerORIGINAL.swift */; };
 		CAE965C023BBA2C300766912 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE965BF23BBA2C300766912 /* MapViewModel.swift */; };
 		EE8366EB117A1BA4D6BB0D7D /* libPods-ArcGIS-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4618C512CEBC12FB878B34A1 /* libPods-ArcGIS-Demo.a */; };
 /* End PBXBuildFile section */
@@ -85,7 +84,6 @@
 		CA8657E723AD30AD00A510DD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "ArcGIS-Demo/MapViewController.swift"; sourceTree = SOURCE_ROOT; };
 		CA8657ED23B4F89800A510DD /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		CA88B93123BE46EA008CBD70 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Map.swift; path = "ArcGIS-Demo/View/Map.swift"; sourceTree = SOURCE_ROOT; };
-		CA88B93323BE52B0008CBD70 /* MapViewControllerORIGINAL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerORIGINAL.swift; sourceTree = "<group>"; };
 		CAE965BF23BBA2C300766912 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewModel.swift; path = "ArcGIS-Demo/MapViewModel.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -152,7 +150,6 @@
 				CA8657E723AD30AD00A510DD /* MapViewController.swift */,
 				CA43B84523BE6C8000D041D3 /* DetailViewController.swift */,
 				CA32FE4C23BF95C400DA5468 /* DetailTableViewCell.swift */,
-				CA88B93323BE52B0008CBD70 /* MapViewControllerORIGINAL.swift */,
 				CA8657ED23B4F89800A510DD /* TabViewController.swift */,
 				2DCE0B1A23BBBA9B00916620 /* ProfileViewController.swift */,
 			);
@@ -412,7 +409,6 @@
 			files = (
 				CA88B93223BE46EA008CBD70 /* Map.swift in Sources */,
 				CA32FE4D23BF95C400DA5468 /* DetailTableViewCell.swift in Sources */,
-				CA88B93423BE52B0008CBD70 /* MapViewControllerORIGINAL.swift in Sources */,
 				10D5133E23AD2DF000AE4C33 /* LoginViewController.swift in Sources */,
 				10CD1CEB23BB92E400CBBA5B /* LoginView.swift in Sources */,
 				1008F8B823BF8511000F89CC /* CustomTextField.swift in Sources */,

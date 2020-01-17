@@ -8,14 +8,11 @@ import Foundation
 import ArcGIS
 import WebKit
 
-class LoginViewController:UIViewController, WKNavigationDelegate, AGSAuthenticationManagerDelegate {
+class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
      
      private var auth = AGS()
      private var loginView = LoginView()
      private var credentials = AGSCredential()
-     var webView: WKWebView!
-     
-     private var loggedin:UInt = 1
      
      func setupConstraints(){
           loginView.loginContentView.insertSubview(loginView.logoImageView, aboveSubview: view)
@@ -68,7 +65,6 @@ class LoginViewController:UIViewController, WKNavigationDelegate, AGSAuthenticat
                     self!.present(alert, animated: true, completion: nil)
                }
                if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
-                    // TO DO: Change how to pass data between controllers
                     let vc = TabViewController(ags: self!.auth)
                     vc.modalPresentationStyle = .fullScreen
                     self?.present(vc, animated: true, completion: nil)

@@ -63,7 +63,7 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
     //MARK: Refresh map
     @objc public func RefreshMap() {
         
-        let portalItem = AGSPortalItem(portal: auth!.portal, itemID: "2f1fd68a58a14656bd6625cd681873e5")
+        let portalItem = AGSPortalItem(portal: auth!.portal, itemID: "cac570efac634702ac08aa6022220738")
         let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5,y: UIScreen.main.bounds.size.height*0.5)
         
         var screenlocation = mapView.screen(toLocation: frameSize)
@@ -87,7 +87,7 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
     //MARK: Setup map
     public func setupMap() {
         
-        let portalItem = AGSPortalItem(portal: auth!.portal, itemID: "2f1fd68a58a14656bd6625cd681873e5")
+        let portalItem = AGSPortalItem(portal: auth!.portal, itemID: "cac570efac634702ac08aa6022220738")
         
         //8dda0e7b5e2d4fafa80132d59122268c
         //ce8a38475bc0443aaac04b025b522494
