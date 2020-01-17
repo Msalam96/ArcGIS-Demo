@@ -50,6 +50,8 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
         //initialize and declare the mapview to a new map view
         mapView = AGSMapView()
         
+        mapView.wrapAroundMode = AGSWrapAroundMode.enabledWhenSupported
+        
         //set up the map
         setupMap()
         
@@ -68,6 +70,7 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
         
         var screenlocation = mapView.screen(toLocation: frameSize)
         
+        mapView.map = nil
         let portalMap = AGSMap(item: portalItem)
         self.mapView.setViewpointCenter(screenlocation, completion: nil)
         mapView.map = portalMap
