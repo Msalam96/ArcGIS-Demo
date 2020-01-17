@@ -22,15 +22,24 @@ class Cell: UICollectionViewCell {
 
     let separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .purple
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
         return view
     }()
+    
+    let userProfileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .brown
+        imageView.image = UIImage(named: "userIcon-1")
+        
+        return imageView
+    }()
+    
     //this gets called when a cell is dequeued
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .blue
+        //backgroundColor = .blue
         setupViews()
+        
         let textLabel = UILabel(frame: .zero)
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(textLabel)
@@ -45,14 +54,22 @@ class Cell: UICollectionViewCell {
     func setupViews()
     {
         addSubview(iconImageView)
-        addSubview(separatorView)                                                                    
+        addSubview(separatorView)
+        addSubview(userProfileImageView)
                             
                                         //|-  => represents the left most corner of the screen
                                         //-|  => represents the right most corner of
                                         //[v0]  => represents the subview in this case it is the iconImageView, which has the cell as its parentView
-        addConstraintsWithFormat(format: "H:|-1-[v0]-350-|", views: iconImageView)
-        addConstraintsWithFormat(format:  "V:|-1-[v0]-16-[v1(1)]|", views: iconImageView,separatorView)
+        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: iconImageView)
+        
+        
+        addConstraintsWithFormat(format: "H:|-16-[v0(44)]", views: userProfileImageView)
+        //vertical constraints
+        addConstraintsWithFormat(format:  "V:|-8-[v0]-8-[v1(34)]-16-[v2(1)]|", views: iconImageView, userProfileImageView, separatorView)
+        
         addConstraintsWithFormat(format:"H:|[v0]|", views: separatorView)
+        
+        
 
 //        addConstraints(NSLayoutConstraint.constraints(withVisualFormat:"V:[v0(5)]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views:["v0":separatorView]))
        //iconImageView.frame = CGRect(x:0, y:0 , width: 50, height: 100)
@@ -85,6 +102,7 @@ extension UIView{
         for(index, view) in views.enumerated()
         {
             let key = "v\(index)"
+            view.translatesAutoresizingMaskIntoConstraints = false
             viewsDictionary[key] = view
         }
         

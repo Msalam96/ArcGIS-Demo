@@ -94,7 +94,7 @@ class ProfileViewController: UIViewController {
 //        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView")
 //
 //        self.collectionView.alwaysBounceVertical = true
-//        self.collectionView.backgroundColor = .white
+        self.collectionView.backgroundColor = .white
 //
     }
 
@@ -168,22 +168,23 @@ extension ProfileViewController: UICollectionViewDataSource {
         let displayModel = UserDisplayViewModel(userPortal: auth!)
     
         
-        cell.contentView.layer.cornerRadius = 2.0
-         cell.contentView.layer.borderWidth = 1.0
-         cell.contentView.layer.borderColor = UIColor.clear.cgColor
-         cell.contentView.layer.masksToBounds = true;
-         //cell.layer.shadowColor = UIColor.lightGray.cgColor
-         cell.layer.shadowOffset = CGSize(width:0,height: 2.0)
-         cell.layer.shadowRadius = 2.0
-         cell.layer.shadowOpacity = 1.0
-         cell.layer.masksToBounds = false;
-         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
+//         cell.contentView.layer.cornerRadius = 2.0
+//         cell.contentView.layer.borderWidth = 1.0
+//         cell.contentView.layer.borderColor = UIColor.clear.cgColor
+//         cell.contentView.layer.masksToBounds = true;
+//         //cell.layer.shadowColor = UIColor.lightGray.cgColor
+//         cell.layer.shadowOffset = CGSize(width:0,height: 2.0)
+//         cell.layer.shadowRadius = 2.0
+//         cell.layer.shadowOpacity = 1.0
+//         cell.layer.masksToBounds = false;
+//         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         
         let toDisplay = displayModel.displayUserInfo()
         let data = toDisplay[indexPath.item]
         //let data = auth?.portal.user?.fullName
-        cell.textLabel.text = String(data)
-        //cell.backgroundColor = .blue
+        //cell.textLabel.text = String(data)
+        
+        cell.backgroundColor = .clear
 
             return cell
     }
@@ -193,13 +194,13 @@ extension ProfileViewController: UICollectionViewDataSource {
         if kind == UICollectionView.elementKindSectionHeader
         {
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath)
-                  header.backgroundColor = .blue
+            header.backgroundColor = .cyan
                   return header
         }
         
         else{
             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footerId", for: indexPath)
-                  footer.backgroundColor = .green
+                  footer.backgroundColor = .white
                   return footer
         }
       
