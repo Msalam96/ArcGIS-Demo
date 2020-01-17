@@ -19,12 +19,18 @@ class ProfileViewController: UIViewController {
 //        "two",
 //        "t"
 //    ]
+    let headerId = "headerId"
+    
+    
     fileprivate let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame:.zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         //Registering cell with Cell identifier string "Cell"
         cv.register(Cell.self, forCellWithReuseIdentifier: "Cell")
+        cv.register(Cell.self, forSupplementaryViewOfKind:
+            UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
+        cv.register(Cell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footerId" )
         return cv
     }()
     
@@ -181,7 +187,31 @@ extension ProfileViewController: UICollectionViewDataSource {
 
             return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if kind == UICollectionView.elementKindSectionHeader
+        {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath)
+                  header.backgroundColor = .blue
+                  return header
+        }
+        
+        else{
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footerId", for: indexPath)
+                  footer.backgroundColor = .green
+                  return footer
+        }
+      
+    }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
+            return  CGSize(width: view.frame.width, height: 50 )
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return  CGSize(width: view.frame.width, height: 100 )
+    }
 //    func collectionView(_ collectionView: UICollectionView,
 //                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.identifier, for: indexPath) as! Cell
