@@ -11,7 +11,6 @@
 		1008F8BA23BF87CE000F89CC /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008F8B923BF87CE000F89CC /* CustomButton.swift */; };
 		10CD1CE923BB8F3400CBBA5B /* AGS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD1CE823BB8F3400CBBA5B /* AGS.swift */; };
 		10CD1CEB23BB92E400CBBA5B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD1CEA23BB92E400CBBA5B /* LoginView.swift */; };
-		10CD1CED23BBA21000CBBA5B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD1CEC23BBA21000CBBA5B /* LoginViewModel.swift */; };
 		10D5133E23AD2DF000AE4C33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D5133D23AD2DF000AE4C33 /* LoginViewController.swift */; };
 		10E9D8E323AB016D00ED8115 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D8E223AB016D00ED8115 /* AppDelegate.swift */; };
 		10E9D8E523AB016D00ED8115 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D8E423AB016D00ED8115 /* SceneDelegate.swift */; };
@@ -31,7 +30,6 @@
 		CA8657E823AD30AD00A510DD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8657E723AD30AD00A510DD /* MapViewController.swift */; };
 		CA8657EE23B4F89800A510DD /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8657ED23B4F89800A510DD /* TabViewController.swift */; };
 		CA88B93223BE46EA008CBD70 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88B93123BE46EA008CBD70 /* Map.swift */; };
-		CA88B93423BE52B0008CBD70 /* MapViewControllerORIGINAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88B93323BE52B0008CBD70 /* MapViewControllerORIGINAL.swift */; };
 		CAE965C023BBA2C300766912 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE965BF23BBA2C300766912 /* MapViewModel.swift */; };
 		EE8366EB117A1BA4D6BB0D7D /* libPods-ArcGIS-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4618C512CEBC12FB878B34A1 /* libPods-ArcGIS-Demo.a */; };
 /* End PBXBuildFile section */
@@ -58,7 +56,6 @@
 		1008F8B923BF87CE000F89CC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomButton.swift; path = "ArcGIS-Demo/View/CustomButton.swift"; sourceTree = SOURCE_ROOT; };
 		10CD1CE823BB8F3400CBBA5B /* AGS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AGS.swift; path = "ArcGIS-Demo/View/AGS.swift"; sourceTree = SOURCE_ROOT; };
 		10CD1CEA23BB92E400CBBA5B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		10CD1CEC23BBA21000CBBA5B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = "ArcGIS-Demo/View/LoginViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		10D5133D23AD2DF000AE4C33 /* LoginViewController.swift */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "ArcGIS-Demo/View/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
 		10E9D8DF23AB016D00ED8115 /* ArcGIS-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ArcGIS-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E9D8E223AB016D00ED8115 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,7 +84,6 @@
 		CA8657E723AD30AD00A510DD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "ArcGIS-Demo/MapViewController.swift"; sourceTree = SOURCE_ROOT; };
 		CA8657ED23B4F89800A510DD /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		CA88B93123BE46EA008CBD70 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Map.swift; path = "ArcGIS-Demo/View/Map.swift"; sourceTree = SOURCE_ROOT; };
-		CA88B93323BE52B0008CBD70 /* MapViewControllerORIGINAL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerORIGINAL.swift; sourceTree = "<group>"; };
 		CAE965BF23BBA2C300766912 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewModel.swift; path = "ArcGIS-Demo/MapViewModel.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -141,7 +137,6 @@
 		103CFF4D23ABC27C00950858 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				10CD1CEC23BBA21000CBBA5B /* LoginViewModel.swift */,
 				CAE965BF23BBA2C300766912 /* MapViewModel.swift */,
 				2DCE0B1E23BE32C400916620 /* UserDisplayViewModel.swift */,
 			);
@@ -155,7 +150,6 @@
 				CA8657E723AD30AD00A510DD /* MapViewController.swift */,
 				CA43B84523BE6C8000D041D3 /* DetailViewController.swift */,
 				CA32FE4C23BF95C400DA5468 /* DetailTableViewCell.swift */,
-				CA88B93323BE52B0008CBD70 /* MapViewControllerORIGINAL.swift */,
 				CA8657ED23B4F89800A510DD /* TabViewController.swift */,
 				2DCE0B1A23BBBA9B00916620 /* ProfileViewController.swift */,
 			);
@@ -415,13 +409,11 @@
 			files = (
 				CA88B93223BE46EA008CBD70 /* Map.swift in Sources */,
 				CA32FE4D23BF95C400DA5468 /* DetailTableViewCell.swift in Sources */,
-				CA88B93423BE52B0008CBD70 /* MapViewControllerORIGINAL.swift in Sources */,
 				10D5133E23AD2DF000AE4C33 /* LoginViewController.swift in Sources */,
 				10CD1CEB23BB92E400CBBA5B /* LoginView.swift in Sources */,
 				1008F8B823BF8511000F89CC /* CustomTextField.swift in Sources */,
 				10CD1CE923BB8F3400CBBA5B /* AGS.swift in Sources */,
 				10E9D8E723AB016D00ED8115 /* ViewController.swift in Sources */,
-				10CD1CED23BBA21000CBBA5B /* LoginViewModel.swift in Sources */,
 				CA43B84623BE6C8000D041D3 /* DetailViewController.swift in Sources */,
 				10E9D8E323AB016D00ED8115 /* AppDelegate.swift in Sources */,
 				CA8657E823AD30AD00A510DD /* MapViewController.swift in Sources */,

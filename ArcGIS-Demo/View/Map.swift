@@ -10,12 +10,10 @@ import Foundation
 import ArcGIS
 
 struct Map {
-    
     var mapView: AGSMapView!
     var featureTable: AGSServiceFeatureTable!
     var featureLayer: AGSFeatureLayer!
     var lastQuery: AGSCancelable!
     var selectedFeature: AGSArcGISFeature!
     var featureServiceURL: String!
-    
 }

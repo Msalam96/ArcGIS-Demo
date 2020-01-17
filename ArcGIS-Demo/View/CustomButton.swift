@@ -13,9 +13,9 @@ class CustomButton:UIButton {
     
     func setup() {
         self.layer.shadowColor = UIColor.black.cgColor
-//        self.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
-//        self.layer.shadowRadius = 8
-//        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
+        self.layer.shadowRadius = 8
+        self.layer.shadowOpacity = 0.5
         self.backgroundColor = .systemOrange
         self.setTitle("Login", for: .normal)
         self.tintColor = .red

@@ -69,8 +69,6 @@ class TabViewController : UITabBarController {
         
         mapViewController.auth = self.auth
         
-        
-        
         //MARK: PROFILE SETUP
         //instantiate the ProfileViewController
         let profileViewController = ProfileViewController(auth: auth)
@@ -86,7 +84,6 @@ class TabViewController : UITabBarController {
 
         //set the tab bar title to Profile
         profileNavController.tabBarItem.title = "Profile"
-
         profileNavController.navigationBar.barTintColor = .orange
         
         profileViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: profileViewController, action: #selector(profileViewController.logOut))
@@ -97,6 +94,9 @@ class TabViewController : UITabBarController {
         
         tabBar.tintColor = .white
         tabBar.barTintColor = .orange
+    
+        let fontAttributes = [NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 20)]
+        UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
         
         viewControllers = [
             mapNavController,
