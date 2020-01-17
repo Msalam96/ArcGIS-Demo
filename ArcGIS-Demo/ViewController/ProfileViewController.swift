@@ -45,7 +45,6 @@ class ProfileViewController: UIViewController {
 
             profileArray = UserDisplayViewModel(userPortal: auth).displayUserInfo()          
         }
-    }
     
     required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
@@ -126,7 +125,6 @@ class ProfileViewController: UIViewController {
     
 }
 
-}
 
 extension ProfileViewController: UICollectionViewDragDelegate
 {
@@ -306,4 +304,5 @@ extension ProfileViewController: UICollectionViewDropDelegate
         if coordinator.proposal.operation == .move {
         }
     }
+}
 }
