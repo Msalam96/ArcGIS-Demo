@@ -11,7 +11,6 @@
 		1008F8BA23BF87CE000F89CC /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008F8B923BF87CE000F89CC /* CustomButton.swift */; };
 		10CD1CE923BB8F3400CBBA5B /* AGS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD1CE823BB8F3400CBBA5B /* AGS.swift */; };
 		10CD1CEB23BB92E400CBBA5B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD1CEA23BB92E400CBBA5B /* LoginView.swift */; };
-		10CD1CED23BBA21000CBBA5B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD1CEC23BBA21000CBBA5B /* LoginViewModel.swift */; };
 		10D5133E23AD2DF000AE4C33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D5133D23AD2DF000AE4C33 /* LoginViewController.swift */; };
 		10E9D8E323AB016D00ED8115 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D8E223AB016D00ED8115 /* AppDelegate.swift */; };
 		10E9D8E523AB016D00ED8115 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E9D8E423AB016D00ED8115 /* SceneDelegate.swift */; };
@@ -58,7 +57,6 @@
 		1008F8B923BF87CE000F89CC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomButton.swift; path = "ArcGIS-Demo/View/CustomButton.swift"; sourceTree = SOURCE_ROOT; };
 		10CD1CE823BB8F3400CBBA5B /* AGS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AGS.swift; path = "ArcGIS-Demo/View/AGS.swift"; sourceTree = SOURCE_ROOT; };
 		10CD1CEA23BB92E400CBBA5B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		10CD1CEC23BBA21000CBBA5B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = "ArcGIS-Demo/View/LoginViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		10D5133D23AD2DF000AE4C33 /* LoginViewController.swift */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "ArcGIS-Demo/View/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
 		10E9D8DF23AB016D00ED8115 /* ArcGIS-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ArcGIS-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E9D8E223AB016D00ED8115 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 		103CFF4D23ABC27C00950858 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				10CD1CEC23BBA21000CBBA5B /* LoginViewModel.swift */,
 				CAE965BF23BBA2C300766912 /* MapViewModel.swift */,
 				2DCE0B1E23BE32C400916620 /* UserDisplayViewModel.swift */,
 			);
@@ -421,7 +418,6 @@
 				1008F8B823BF8511000F89CC /* CustomTextField.swift in Sources */,
 				10CD1CE923BB8F3400CBBA5B /* AGS.swift in Sources */,
 				10E9D8E723AB016D00ED8115 /* ViewController.swift in Sources */,
-				10CD1CED23BBA21000CBBA5B /* LoginViewModel.swift in Sources */,
 				CA43B84623BE6C8000D041D3 /* DetailViewController.swift in Sources */,
 				10E9D8E323AB016D00ED8115 /* AppDelegate.swift in Sources */,
 				CA8657E823AD30AD00A510DD /* MapViewController.swift in Sources */,

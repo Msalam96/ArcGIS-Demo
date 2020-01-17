@@ -6,13 +6,15 @@
 //  Copyright © 2019 BMS. All rights reserved.
 import Foundation
 import ArcGIS
+import WebKit
 
-class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
+class LoginViewController:UIViewController, WKNavigationDelegate, AGSAuthenticationManagerDelegate {
      
      private var auth = AGS()
      private var loginView = LoginView()
      private var credentials = AGSCredential()
-     
+     var webView: WKWebView!
+
      private var loggedin:UInt = 1
      
      func setupConstraints(){
@@ -64,13 +66,11 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
           loginView.loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
           setupConstraints()
           loginView.setUpAutoLayout()
-          //        let credentials = AGSCredential(user: "brandontod97", password: "wyrsuz-wyhwo6-Wefmyw")
      }
      
      func loadPortal() {
           auth.portal.load() {[weak self] (error) in
                if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
-                    // TO DO: Change how to pass data between controllers
                     let vc = TabViewController(ags: self!.auth)
                     vc.modalPresentationStyle = .fullScreen
                     self?.present(vc, animated: true, completion: nil)
