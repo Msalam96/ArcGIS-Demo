@@ -11,7 +11,7 @@ import ArcGIS
 
 class ProfileViewController: UIViewController {
 
-    //weak var collectionView: UICollectionView!
+      //weak var collectionView: UICollectionView!
 
 //    fileprivate var items: [String] =
 //    [
@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController {
 //    ]
     let headerId = "headerId"
     var profileArray: [String?]!
-    
+
     fileprivate let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame:.zero, collectionViewLayout: layout)
@@ -42,31 +42,17 @@ class ProfileViewController: UIViewController {
     init(auth:AGS) {
             super.init(nibName: nil, bundle: nil)
             self.auth = auth
-            profileArray = UserDisplayViewModel(userPortal: auth).displayUserInfo()
-            
+
+            profileArray = UserDisplayViewModel(userPortal: auth).displayUserInfo()          
         }
+    }
     
     required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
      
-    
     override func loadView() {
         super.loadView()
-
-        
-        
-//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-//        collectionView.translatesAutoresizingMaskIntoConstraints = false
-//        self.view.addSubview(collectionView)
-//        NSLayoutConstraint.activate([
-//            self.view.topAnchor.constraint(equalTo: collectionView.topAnchor),
-//            self.view.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor),
-//            self.view.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
-//            self.view.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor),
-//        ])
-//        self.collectionView = collectionView
-        
     }
 
     override func viewDidLoad() {
@@ -89,6 +75,7 @@ class ProfileViewController: UIViewController {
         collectionView.dragDelegate = self
         collectionView.dragInteractionEnabled = true
         collectionView.dropDelegate = self
+
 //        self.collectionView.dataSource = self
 //        self.collectionView.delegate = self
 //        self.collectionView.register(Cell.self, forCellWithReuseIdentifier: Cell.identifier)
@@ -96,27 +83,16 @@ class ProfileViewController: UIViewController {
 //
 //        self.collectionView.alwaysBounceVertical = true
         self.collectionView.backgroundColor = .white
-        
-//
     }
 
     @objc func resetTimer(){
         timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
-        //let resetTimer = UITapGestureRecognizer(target: self, action: //#selector(ProfileViewController.resetTimer));
-        //self.view.isUserInteractionEnabled = true
-        //self.view.addGestureRecognizer(resetTimer)
     }
-    
-//    @objc func resetTimer() {
-//       timer.invalidate()
-//       timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(ProfileViewController.logOut), userInfo: nil, repeats: true)
-//    }
-//
+
     override func viewDidAppear(_ animated: Bool) {
         let userViewModel = UserDisplayViewModel(userPortal: auth!)
         //print(userViewModel.displayUserInfo())
     }
-    
     
     @objc func logOut(sender: UIButton!) {
         AGSAuthenticationManager.shared().credentialCache.removeAllCredentials()
@@ -124,7 +100,7 @@ class ProfileViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
-    
+
     fileprivate func reorderItems(coordinator: UICollectionViewDropCoordinator, destinationIndexPath: IndexPath, collectionView: UICollectionView) {
 
         collectionView.performBatchUpdates({
@@ -148,6 +124,8 @@ class ProfileViewController: UIViewController {
         }, completion: nil)
     }
     
+}
+
 }
 
 extension ProfileViewController: UICollectionViewDragDelegate
@@ -213,7 +191,7 @@ extension ProfileViewController: UICollectionViewDataSource {
 
             return cell
     }
-    
+   
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         if kind == UICollectionView.elementKindSectionHeader
@@ -254,6 +232,7 @@ extension ProfileViewController: UICollectionViewDataSource {
 //        cell.backgroundColor = .blue
 //        return cell
 //    }
+
 }
 
 extension ProfileViewController: UICollectionViewDelegate {
@@ -266,6 +245,7 @@ extension ProfileViewController: UICollectionViewDelegate {
     
 }
 
+
 //FOR CELL SIZE
 extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     
@@ -274,11 +254,6 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: 50)
     }
-
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return .init(width: view.frame.width, height: 340)
-//    }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -327,6 +302,8 @@ extension ProfileViewController: UICollectionViewDropDelegate
         
         if coordinator.proposal.operation == .move {
             reorderItems(coordinator: coordinator, destinationIndexPath: destinationIndexPath, collectionView: collectionView)
+        let destinationIndexPath = coordinator.destinationIndexPath
+        if coordinator.proposal.operation == .move {
         }
     }
 }

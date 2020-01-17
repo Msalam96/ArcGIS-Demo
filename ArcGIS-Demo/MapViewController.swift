@@ -50,6 +50,8 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
         //initialize and declare the mapview to a new map view
         mapView = AGSMapView()
         
+        mapView.wrapAroundMode = AGSWrapAroundMode.enabledWhenSupported
+        
         //set up the map
         setupMap()
         
@@ -63,11 +65,12 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
     //MARK: Refresh map
     @objc public func RefreshMap() {
         
-        let portalItem = AGSPortalItem(portal: auth!.portal, itemID: "2f1fd68a58a14656bd6625cd681873e5")
+        let portalItem = AGSPortalItem(portal: auth!.portal, itemID: "cac570efac634702ac08aa6022220738")
         let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5,y: UIScreen.main.bounds.size.height*0.5)
         
         var screenlocation = mapView.screen(toLocation: frameSize)
         
+        mapView.map = nil
         let portalMap = AGSMap(item: portalItem)
         self.mapView.setViewpointCenter(screenlocation, completion: nil)
         mapView.map = portalMap
@@ -87,10 +90,11 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
     //MARK: Setup map
     public func setupMap() {
         
-        let portalItem = AGSPortalItem(portal: auth!.portal, itemID: "2f1fd68a58a14656bd6625cd681873e5")
+        let portalItem = AGSPortalItem(portal: auth!.portal, itemID: "cac570efac634702ac08aa6022220738")
         
         //8dda0e7b5e2d4fafa80132d59122268c
         //ce8a38475bc0443aaac04b025b522494
+        //2f1fd68a58a14656bd6625cd681873e5
         
         let portalMap = AGSMap(item: portalItem)
         
@@ -99,12 +103,6 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
         
          // set the map to be displayed in an AGSMapView
         mapView.map = portalMap
-        
-        //let map = AGSMap(basemapType: .navigationVector, latitude: 34.02700, longitude: -118.80543, levelOfDetail: 13)
-        //let basemap = AGSBasemapType(.navigationVector)
-        
-        //remove the existing basemap layer
-        //self.mapView.removeMapLayerWithName(kBasemapLayerName)
         
         //add new Layer
         let newBasemapLayer = AGSBasemap(item: portalItem)
@@ -173,17 +171,11 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
         tableView.reloadData()
         tableView.translatesAutoresizingMaskIntoConstraints = false
     
-        tableView.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        tableView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        tableView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        tableView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         
         self.mapView.callout.customView = tableView
-        
-//        tableView.topAnchor.constraint(equalTo: self.mapView.callout.topAnchor).isActive = true
-//        tableView.bottomAnchor.constraint(equalTo: self.mapView.callout.bottomAnchor).isActive = true
-//        tableView.leftAnchor.constraint(equalTo: self.mapView.callout.leftAnchor).isActive = true
-//        tableView.rightAnchor.constraint(equalTo: self.mapView.callout.rightAnchor).isActive = true
-        
-        //self.mapView.callout.detail = "x: \(feature.attributes["latitude"] ?? "Unknown") - y: \(feature.attributes["longitude"] ?? "Unknown")"
+
         self.mapView.callout.delegate = self
         self.mapView.callout.show(for: feature, tapLocation: tapLocation, animated: true)
     }

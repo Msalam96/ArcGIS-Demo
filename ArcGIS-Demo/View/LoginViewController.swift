@@ -6,11 +6,13 @@
 //  Copyright © 2019 BMS. All rights reserved.
 import Foundation
 import ArcGIS
+import WebKit
 
 class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
      
      private var auth = AGS()
      private var loginView = LoginView()
+     private var credentials = AGSCredential()
      
      func setupConstraints(){
           loginView.loginContentView.insertSubview(loginView.logoImageView, aboveSubview: view)
@@ -23,7 +25,7 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
           loginView.loginContentView.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
           loginView.loginContentView.heightAnchor.constraint(equalToConstant: view.frame.height/3).isActive = true
           loginView.loginContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-
+          
           loginView.githubButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60).isActive = true
           loginView.githubButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0.0).isActive = true
           loginView.githubButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier:  0.4).isActive = true
@@ -33,22 +35,13 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
      override func viewDidLoad() {
           super.viewDidLoad()
           view.backgroundColor = .white
-          
+          loginView.addtoSubView()
+          view.addSubview(loginView.loginContentView)
+          view.addSubview(loginView.githubButton)
+          loginView.loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+          setupConstraints()
+          loginView.setUpAutoLayout()
           AGSAuthenticationManager.shared().delegate = self
-          
-          auth.portal.load() {[weak self] (error) in
-               if (error != nil) {
-                    let alert = UIAlertController(title: "Error", message: "Username or Password Does Not Match", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-                    self!.present(alert, animated: true, completion: nil)
-               }
-               if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
-                    // TO DO: Change how to pass data between controllers
-                    let vc = TabViewController(ags: self!.auth)
-                    vc.modalPresentationStyle = .fullScreen
-                    self?.present(vc, animated: true, completion: nil)
-               }
-          }
      }
      
      @objc func login(sender: UIButton!) {
@@ -58,7 +51,26 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
                present(alert, animated: true, completion: nil)
           } else {
                let credentials = AGSCredential(user: loginView.usernameTextField.text!, password: loginView.passwordTextField.text!)
+               auth.portal.credential = credentials
+               loginPortal()
                auth.activeChallenge?.continue(with: credentials)
+          }
+     }
+     
+     func loginPortal(){
+          auth.portal.load() {[weak self] (error) in
+               if (error != nil) {
+                    let alert = UIAlertController(title: "Error", message: "Username or Password Does Not Match", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+                    self!.present(alert, animated: true, completion: nil)
+               }
+               if self?.auth.portal.loadStatus == AGSLoadStatus.loaded {
+                    let vc = TabViewController(ags: self!.auth)
+                    vc.modalPresentationStyle = .fullScreen
+                    self?.present(vc, animated: true, completion: nil)
+               } else if (self?.auth.portal.loadStatus != AGSLoadStatus.loaded){
+                    print("Logging error")
+               }
           }
      }
      
@@ -69,12 +81,5 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
 
      func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
           auth.activeChallenge = challenge
-          loginView.addtoSubView()
-          view.addSubview(loginView.loginContentView)
-          view.addSubview(loginView.githubButton)
-          loginView.loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
-          setupConstraints()
-          loginView.setUpAutoLayout()
-          //        let credentials = AGSCredential(user: "brandontod97", password: "wyrsuz-wyhwo6-Wefmyw")
      }
 }
