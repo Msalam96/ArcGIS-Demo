@@ -23,6 +23,7 @@ class ProfileViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame:.zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
+        //Registering cell with Cell identifier string "Cell"
         cv.register(Cell.self, forCellWithReuseIdentifier: "Cell")
         return cv
     }()
@@ -154,17 +155,18 @@ extension ProfileViewController: UICollectionViewDataSource {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width/2.5, height: collectionView.frame.width/2)
     }
-    
+    //Populates cell with our data
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
         let displayModel = UserDisplayViewModel(userPortal: auth!)
     
+        
         cell.contentView.layer.cornerRadius = 2.0
          cell.contentView.layer.borderWidth = 1.0
          cell.contentView.layer.borderColor = UIColor.clear.cgColor
          cell.contentView.layer.masksToBounds = true;
-         cell.layer.shadowColor = UIColor.lightGray.cgColor
+         //cell.layer.shadowColor = UIColor.lightGray.cgColor
          cell.layer.shadowOffset = CGSize(width:0,height: 2.0)
          cell.layer.shadowRadius = 2.0
          cell.layer.shadowOpacity = 1.0
@@ -203,14 +205,13 @@ extension ProfileViewController: UICollectionViewDelegate {
     
 }
 
-
 //FOR CELL SIZE
 extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 44)
+        return CGSize(width: collectionView.bounds.width, height: 50)
     }
 
     

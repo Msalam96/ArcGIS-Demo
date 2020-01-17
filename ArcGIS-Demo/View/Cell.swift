@@ -13,9 +13,10 @@ class Cell: UICollectionViewCell {
     
     weak var textLabel: UILabel!
 
+    //this gets called when a cell is dequeued
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        backgroundColor = .yellow
         let textLabel = UILabel(frame: .zero)
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(textLabel)
