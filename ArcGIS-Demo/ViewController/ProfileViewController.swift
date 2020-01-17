@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController {
 //        "t"
 //    ]
     let headerId = "headerId"
+    var profileArray: [String?]!
     
     fileprivate let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -27,9 +28,9 @@ class ProfileViewController: UIViewController {
         cv.translatesAutoresizingMaskIntoConstraints = false
         //Registering cell with Cell identifier string "Cell"
         cv.register(Cell.self, forCellWithReuseIdentifier: "Cell")
-        cv.register(Cell.self, forSupplementaryViewOfKind:
+        cv.register(HeaderCell.self, forSupplementaryViewOfKind:
             UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
-        cv.register(Cell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footerId" )
+        cv.register(FooterCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footerId" )
         return cv
     }()
     
@@ -41,6 +42,7 @@ class ProfileViewController: UIViewController {
     init(auth:AGS) {
             super.init(nibName: nil, bundle: nil)
             self.auth = auth
+            profileArray = UserDisplayViewModel(userPortal: auth).displayUserInfo()
             
         }
     
@@ -123,6 +125,29 @@ class ProfileViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
+    fileprivate func reorderItems(coordinator: UICollectionViewDropCoordinator, destinationIndexPath: IndexPath, collectionView: UICollectionView) {
+
+        collectionView.performBatchUpdates({
+            if let item = coordinator.items.first,
+                let sourceIndexPath = item.sourceIndexPath {
+
+                collectionView.performBatchUpdates({
+                    self.profileArray.remove(at: sourceIndexPath.item)
+                    
+                    self.profileArray.insert(item.dragItem.localObject as! String, at: destinationIndexPath.item)
+                    
+                    collectionView.deleteItems(at: [sourceIndexPath])
+                    
+                    collectionView.insertItems(at: [destinationIndexPath])
+                    
+                }, completion: nil)
+                
+                coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
+            }
+            
+        }, completion: nil)
+    }
+    
 }
 
 extension ProfileViewController: UICollectionViewDragDelegate
@@ -131,10 +156,10 @@ extension ProfileViewController: UICollectionViewDragDelegate
        
         
         let displayModel = UserDisplayViewModel(userPortal: auth!)
-        let toDisplay = displayModel.displayUserInfo()
+        let toDisplay = profileArray//displayModel.displayUserInfo()
         
-        let item = toDisplay[indexPath.row]
-        let itemProvider = NSItemProvider(object: item as NSString)
+        let item = toDisplay![indexPath.row]
+        let itemProvider = NSItemProvider(object: item as! NSString)
         let dragItem = UIDragItem(itemProvider: itemProvider)
         dragItem.localObject = item
         
@@ -180,7 +205,7 @@ extension ProfileViewController: UICollectionViewDataSource {
          cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         
         
-        let data = toDisplay[indexPath.item]
+        let data = profileArray [indexPath.item]!
         //let data = auth?.portal.user?.fullName
         cell.textLabel.text = String(data)
         
@@ -194,17 +219,20 @@ extension ProfileViewController: UICollectionViewDataSource {
         if kind == UICollectionView.elementKindSectionHeader
         {
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath)
-            header.backgroundColor = .green
-            
+//            header.backgroundColor = .black
+//            let testArray: [UIView]
+//            testArray = header.subviews
+//            testArray[3].backgroundColor = .black
+//            print("Test Array Count is:")
+//            print(testArray.count)
                   return header
         }
         
         else{
             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footerId", for: indexPath)
-                  footer.backgroundColor = .white
+                  //footer.backgroundColor = .white
                   return footer
         }
-      
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
@@ -286,9 +314,19 @@ extension ProfileViewController: UICollectionViewDropDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-        let destinationIndexPath = coordinator.destinationIndexPath
-        if coordinator.proposal.operation == .move {
         
+        var destinationIndexPath : IndexPath
+        
+        if let indexPath = coordinator.destinationIndexPath {
+            destinationIndexPath = indexPath
+        } else {
+            let section = collectionView.numberOfSections-1
+            let row = collectionView.numberOfItems(inSection:  section)
+            destinationIndexPath = IndexPath(item: row-1, section: section)
+        }
+        
+        if coordinator.proposal.operation == .move {
+            reorderItems(coordinator: coordinator, destinationIndexPath: destinationIndexPath, collectionView: collectionView)
         }
     }
 }

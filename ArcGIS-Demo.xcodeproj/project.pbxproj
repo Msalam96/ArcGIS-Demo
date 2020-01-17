@@ -26,6 +26,8 @@
 		2DCE0B1B23BBBA9B00916620 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0B1A23BBBA9B00916620 /* ProfileViewController.swift */; };
 		2DCE0B1D23BDC7D600916620 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0B1C23BDC7D600916620 /* Cell.swift */; };
 		2DCE0B1F23BE32C400916620 /* UserDisplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE0B1E23BE32C400916620 /* UserDisplayViewModel.swift */; };
+		2DE8334A23D1F7F20069803B /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8334923D1F7F20069803B /* HeaderCell.swift */; };
+		2DE8334E23D1FA9C0069803B /* FooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8334D23D1FA9C0069803B /* FooterCell.swift */; };
 		CA32FE4D23BF95C400DA5468 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32FE4C23BF95C400DA5468 /* DetailTableViewCell.swift */; };
 		CA43B84623BE6C8000D041D3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA43B84523BE6C8000D041D3 /* DetailViewController.swift */; };
 		CA8657E823AD30AD00A510DD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8657E723AD30AD00A510DD /* MapViewController.swift */; };
@@ -80,6 +82,8 @@
 		2DCE0B1A23BBBA9B00916620 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2DCE0B1C23BDC7D600916620 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Cell.swift; path = "ArcGIS-Demo/View/Cell.swift"; sourceTree = SOURCE_ROOT; };
 		2DCE0B1E23BE32C400916620 /* UserDisplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDisplayViewModel.swift; path = "ArcGIS-Demo/View/UserDisplayViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		2DE8334923D1F7F20069803B /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaderCell.swift; path = "ArcGIS-Demo/HeaderCell.swift"; sourceTree = SOURCE_ROOT; };
+		2DE8334D23D1FA9C0069803B /* FooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCell.swift; sourceTree = SOURCE_ROOT; };
 		4618C512CEBC12FB878B34A1 /* libPods-ArcGIS-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArcGIS-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9059ACACD65262E6B54EEC9C /* Pods-ArcGIS-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArcGIS-Demo.release.xcconfig"; path = "Target Support Files/Pods-ArcGIS-Demo/Pods-ArcGIS-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		CA32FE4C23BF95C400DA5468 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 				2D5E3DB723C782910057569B /* User.swift */,
 				1008F8B723BF8511000F89CC /* CustomTextField.swift */,
 				1008F8B923BF87CE000F89CC /* CustomButton.swift */,
+				2DE8334923D1F7F20069803B /* HeaderCell.swift */,
+				2DE8334D23D1FA9C0069803B /* FooterCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -420,12 +426,14 @@
 				10CD1CEB23BB92E400CBBA5B /* LoginView.swift in Sources */,
 				1008F8B823BF8511000F89CC /* CustomTextField.swift in Sources */,
 				10CD1CE923BB8F3400CBBA5B /* AGS.swift in Sources */,
+				2DE8334A23D1F7F20069803B /* HeaderCell.swift in Sources */,
 				10E9D8E723AB016D00ED8115 /* ViewController.swift in Sources */,
 				10CD1CED23BBA21000CBBA5B /* LoginViewModel.swift in Sources */,
 				CA43B84623BE6C8000D041D3 /* DetailViewController.swift in Sources */,
 				10E9D8E323AB016D00ED8115 /* AppDelegate.swift in Sources */,
 				CA8657E823AD30AD00A510DD /* MapViewController.swift in Sources */,
 				CA8657EE23B4F89800A510DD /* TabViewController.swift in Sources */,
+				2DE8334E23D1FA9C0069803B /* FooterCell.swift in Sources */,
 				2D5E3DB823C782910057569B /* User.swift in Sources */,
 				2DCE0B1B23BBBA9B00916620 /* ProfileViewController.swift in Sources */,
 				2DCE0B1D23BDC7D600916620 /* Cell.swift in Sources */,

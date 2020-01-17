@@ -25,8 +25,9 @@ struct UserDisplayViewModel
                                        ("User Name: \(self.userPortal.portal.user?.username?.description ?? "")")
         ]
         
+        self.userPortal.portal.user?.organizationID
      return displayArray
     }
-    //("Date Created: \(self.userPortal.portal.user?.created?.description ?? "")"),
+    //("Org# : \( self.userPortal.portal.user?.organizationID""),
     
 }
