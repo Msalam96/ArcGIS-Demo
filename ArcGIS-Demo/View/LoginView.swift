@@ -29,12 +29,14 @@ class LoginView:UIView, UIGestureRecognizerDelegate {
     let usernameTextField:CustomTextField = {
         let textField = CustomTextField()
         textField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.orange, NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 20)!])
+        textField.text = "Anderson888"
         return textField
     }()
     
     let passwordTextField:CustomTextField = {
         let textField = CustomTextField()
         textField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.orange, NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 20)!])
+        textField.text = "voszak-dEddot-1ryxvu"
         return textField
     }()
     

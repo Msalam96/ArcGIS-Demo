@@ -11,6 +11,8 @@ import UIKit
 
 class DetailViewController: UITableView {
     
+    
+    
     var attributesDict:NSMutableDictionary?
     private var keyArray =  [String]()
     private var valueArray =  [Any]()
@@ -53,15 +55,10 @@ extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // set the cell equal to a dequed cell so we can reuse it
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) as! DetailTableViewCell
         
-        cell.textLabel?.text = "\(keyArray[indexPath.row]) : \(valueArray[indexPath.row])"
-        
-//        //make a new label to put in the cell
-//        //its width is the width of the cell
-//        let label = UILabel(frame: CGRect(x: 0, y: 0, width:cell.frame.size.width, height: 20))
-//        label.text = "\(keyArray[indexPath.row]) : \(valueArray[indexPath.row])"
-//        cell.contentView.addSubview(label)
+        cell.leftText = keyArray[indexPath.row]
+        cell.rightText = "\(valueArray[indexPath.row])"
         
         
         return cell
