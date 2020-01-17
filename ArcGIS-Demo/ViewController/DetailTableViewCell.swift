@@ -58,14 +58,12 @@ class DetailTableViewCell: UITableViewCell {
         theTextLabelRight.text = "\(rightText)"
     }
     
-    
-
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         fatalError("Interface Builder is not supported!")
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -74,7 +72,6 @@ class DetailTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
         //self.backgroundColor = .gray
         self.textLabel?.text = ""
     }
@@ -83,5 +80,4 @@ class DetailTableViewCell: UITableViewCell {
         super.layoutSubviews()
         self.contentView.frame = self.contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12))
     }
-
 }

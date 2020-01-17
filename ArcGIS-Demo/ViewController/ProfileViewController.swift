@@ -50,15 +50,16 @@ class ProfileViewController: UIViewController {
             fatalError("init(coder:) has not been implemented")
         }
      
-    override func loadView() {
-        super.loadView()
-    }
-
     override func viewDidLoad() {
     AGSAuthenticationManager.shared().credentialCache.enableAutoSyncToKeychain(withIdentifier: "ArcGIS-Demo", accessGroup: nil, acrossDevices: false)
         
         super.viewDidLoad()
 
+        self.navigationItem.title = "Profile"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
+        self.navigationItem.rightBarButtonItem?.tintColor = .white
+        self.tabBarItem.title = "Profile"
+        
         view.addSubview(collectionView)
         collectionView.backgroundColor = .white
         collectionView.alwaysBounceVertical = true

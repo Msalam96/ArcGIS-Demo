@@ -105,7 +105,6 @@ struct MapViewModel{
     
     //MARK: Refresh map
     public func RefreshMap() {
-        
         //the portal item
         let portalItem = AGSPortalItem(portal: auth!.portal, itemID: "2f1fd68a58a14656bd6625cd681873e5")
         
@@ -113,7 +112,7 @@ struct MapViewModel{
         let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5,y: UIScreen.main.bounds.size.height*0.5)
         
         // center point of the screen
-        var screenlocation = mapplication.mapView.screen(toLocation: frameSize)
+        let screenlocation = mapplication.mapView.screen(toLocation: frameSize)
         
         //load a new map from the portal
         let portalMap = AGSMap(item: portalItem)
@@ -129,9 +128,7 @@ struct MapViewModel{
         
         //set the basemap to the newly loaded basemap
         mapplication.mapView.map?.basemap = newBasemapLayer
-        
     }
-    
     
     //MARK: setup location display
     func setupLocationDisplay() {
