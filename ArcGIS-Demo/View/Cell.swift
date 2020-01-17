@@ -13,12 +13,13 @@ class Cell: UICollectionViewCell {
     
     weak var textLabel: UILabel!
     
-    let iconImageView: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Test text lets see if it prints out"
+    let iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .white
+        imageView.image = UIImage(named: "gislogo")
         
-        return label
+        
+        return imageView
     }()
 
     let separatorView: UIView = {
@@ -29,7 +30,7 @@ class Cell: UICollectionViewCell {
     
     let userProfileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .brown
+        imageView.backgroundColor = .white
         imageView.image = UIImage(named: "userIcon-1")
         
         return imageView
@@ -62,7 +63,7 @@ class Cell: UICollectionViewCell {
                                         //|-  => represents the left most corner of the screen
                                         //-|  => represents the right most corner of
                                         //[v0]  => represents the subview in this case it is the iconImageView, which has the cell as its parentView
-        addConstraintsWithFormat(format: "H:|-75-[v0]-16-|", views: iconImageView)
+        addConstraintsWithFormat(format: "H:|-150-[v0]-150-|", views: iconImageView)
         
         
         addConstraintsWithFormat(format: "H:|-4-[v0(34)]", views: userProfileImageView)

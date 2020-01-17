@@ -21,7 +21,6 @@ class ProfileViewController: UIViewController {
 //    ]
     let headerId = "headerId"
     
-    
     fileprivate let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame:.zero, collectionViewLayout: layout)
@@ -95,6 +94,7 @@ class ProfileViewController: UIViewController {
 //
 //        self.collectionView.alwaysBounceVertical = true
         self.collectionView.backgroundColor = .white
+        
 //
     }
 
@@ -163,10 +163,12 @@ extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
+        
         let displayModel = UserDisplayViewModel(userPortal: auth!)
+        let toDisplay = displayModel.displayUserInfo()
     
         
-        cell.contentView.layer.cornerRadius = 2.0
+         cell.contentView.layer.cornerRadius = 2.0
          cell.contentView.layer.borderWidth = 1.0
          cell.contentView.layer.borderColor = UIColor.clear.cgColor
          cell.contentView.layer.masksToBounds = true;
@@ -177,7 +179,7 @@ extension ProfileViewController: UICollectionViewDataSource {
          cell.layer.masksToBounds = false;
          cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         
-        let toDisplay = displayModel.displayUserInfo()
+        
         let data = toDisplay[indexPath.item]
         //let data = auth?.portal.user?.fullName
         cell.textLabel.text = String(data)
@@ -192,13 +194,14 @@ extension ProfileViewController: UICollectionViewDataSource {
         if kind == UICollectionView.elementKindSectionHeader
         {
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath)
-            header.backgroundColor = .cyan
+            header.backgroundColor = .green
+            
                   return header
         }
         
         else{
             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footerId", for: indexPath)
-                  footer.backgroundColor = .green
+                  footer.backgroundColor = .white
                   return footer
         }
       
@@ -209,7 +212,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return  CGSize(width: view.frame.width, height: 100 )
+        return  CGSize(width: 50, height: 100 )
     }
 //    func collectionView(_ collectionView: UICollectionView,
 //                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -229,6 +232,7 @@ extension ProfileViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        print(indexPath.item)
     }
     
     

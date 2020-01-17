@@ -15,6 +15,7 @@ struct UserDisplayViewModel
     init(userPortal: AGS)
     {
         self.userPortal = userPortal
+
     }
     
     func displayUserInfo() -> [String]
@@ -23,6 +24,7 @@ struct UserDisplayViewModel
         let displayArray: [String] = [("Name: \(self.userPortal.portal.user?.fullName?.description ?? "")"), "Email: \(self.userPortal.portal.user?.email?.description ?? "")",
                                        ("User Name: \(self.userPortal.portal.user?.username?.description ?? "")")
         ]
+        
      return displayArray
     }
     //("Date Created: \(self.userPortal.portal.user?.created?.description ?? "")"),
