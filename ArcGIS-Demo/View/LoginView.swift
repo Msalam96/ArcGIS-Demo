@@ -53,6 +53,7 @@ class LoginView:UIView, UIGestureRecognizerDelegate {
         
         passwordTextField.addImage(image: "password")
         passwordTextField.changePlaceHolder(text: "Password", font: "AppleSDGothicNeo-Bold")
+        passwordTextField.isPasswordField()
         passwordTextField.topAnchor.constraint(equalTo:usernameTextField.bottomAnchor, constant:20).isActive = true
         passwordTextField.heightAnchor.constraint(equalToConstant:50).isActive = true
         passwordTextField.leftAnchor.constraint(equalTo:loginContentView.leftAnchor, constant:20).isActive = true

@@ -23,8 +23,6 @@ class CustomTextField:UITextField {
         self.layer.shadowOpacity = 0.5
         self.layer.borderWidth = 3.0
         self.layer.cornerRadius = 10
-        
-//        self.attributedPlaceholder = NSAttributedString(string: placeholdername, attributes: [NSAttributedString.Key.foregroundColor: UIColor.orange, NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Bold", size: 20)!])
         self.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         self.textColor = UIColor.orange
     }
@@ -52,5 +50,9 @@ class CustomTextField:UITextField {
     
     func changePlaceHolder(text: String, font: String) {
         self.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.orange, NSAttributedString.Key.font: UIFont(name: font, size: 20)!])
+    }
+    
+    func isPasswordField() {
+        self.isSecureTextEntry = true
     }
 }
