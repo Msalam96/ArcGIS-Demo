@@ -42,11 +42,26 @@ class MapViewController : UIViewController,AGSGeoViewTouchDelegate, AGSCalloutDe
         
         //set background to purple
         view.backgroundColor = .purple
+        self.navigationItem.title = "Map"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Current Location", style: .plain, target: self, action: #selector(self.setupLocationDisplay))
+        self.navigationItem.leftBarButtonItem?.tintColor = .white
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(self.RefreshMap))
+        self.navigationItem.rightBarButtonItem?.tintColor = .white
+        
+        //license the app with the supplied License key
+       do {
+        let result = try AGSArcGISRuntimeEnvironment.setLicenseKey("runtimelite,1000,rud7613398925,none,D7MFA0PL4S6LLAMEY139")
+        print("License Result : \(result.licenseStatus)")
+       }
+       catch let error as NSError {
+        print("error: \(error)")
+       }
         
         //initialize and declare the mapview to a new map view
         mapView = AGSMapView()
         
         mapView.wrapAroundMode = AGSWrapAroundMode.enabledWhenSupported
+        
         
         //set up the map
         setupMap()

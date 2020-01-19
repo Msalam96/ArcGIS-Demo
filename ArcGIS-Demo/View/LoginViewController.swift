@@ -9,7 +9,6 @@ import ArcGIS
 import WebKit
 
 class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
-     
      private var auth = AGS()
      private var loginView = LoginView()
      private var credentials = AGSCredential()
@@ -78,7 +77,6 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
           UIApplication.shared.open(URL(string: "https://github.com/Msalam96/ArcGIS-Demo")!)
      }
      
-
      func authenticationManager(_ authenticationManager: AGSAuthenticationManager, didReceive challenge: AGSAuthenticationChallenge) {
           auth.activeChallenge = challenge
      }

@@ -24,8 +24,6 @@ class FooterCell: UICollectionReusableView {
         imageView.frame = self.frame
         
         imageView.image = UIImage(named: "gislogo")
-        
-
         addSubview(imageView)
         
 //        imageView.translatesAutoresizingMaskIntoConstraints = false

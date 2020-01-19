@@ -5,14 +5,10 @@
 //  Created by Brandon Cortes on 1/2/20.
 //  Copyright © 2020 BMS. All rights reserved.
 //
-
 import Foundation
 import UIKit
 
 class DetailViewController: UITableView {
-    
-    
-    
     var attributesDict:NSMutableDictionary?
     private var keyArray =  [String]()
     private var valueArray =  [Any]()
@@ -28,22 +24,17 @@ class DetailViewController: UITableView {
         
         for(key,value) in attributesDict! {
             //print("key:\(key) -- value:\(value)")
-            
             keyArray.append(key as! String)
             valueArray.append(value)
-            
-
         }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        
     }
 }
 
 extension DetailViewController: UITableViewDelegate {
-    
     
 }
 
@@ -60,10 +51,6 @@ extension DetailViewController: UITableViewDataSource {
         cell.leftText = keyArray[indexPath.row]
         cell.rightText = "\(valueArray[indexPath.row])"
         
-        
         return cell
     }
-    
-    
-    
 }
