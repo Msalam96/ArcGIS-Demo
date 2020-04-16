@@ -43,6 +43,8 @@ class LoginViewController:UIViewController, AGSAuthenticationManagerDelegate {
           AGSAuthenticationManager.shared().delegate = self
      }
      
+     // Merge Comment
+     
      @objc func login(sender: UIButton!) {
           if loginView.usernameTextField.text!.isEmpty || loginView.passwordTextField.text!.isEmpty {
                let alert = UIAlertController(title: "Error", message: "Username and Password Must Be Filled", preferredStyle: UIAlertController.Style.alert)
